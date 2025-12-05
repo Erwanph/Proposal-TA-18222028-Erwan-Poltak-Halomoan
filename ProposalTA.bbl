@@ -197,95 +197,6 @@
       \verb 10.3386/w26211
       \endverb
     \endentry
-    \entry{box1970time}{book}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=d30289ba50f0f7219fb405bc35b8b71c}{%
-           family={Box},
-           familyi={B\bibinitperiod},
-           given={George\bibnamedelimb E.\bibnamedelimi P.},
-           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim P\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=47888ee6b97a184c6a17093aeb509b29}{%
-           family={Jenkins},
-           familyi={J\bibinitperiod},
-           given={Gwilym\bibnamedelima M.},
-           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{location}{1}{%
-        {San Francisco}%
-      }
-      \list{publisher}{1}{%
-        {Holden-Day}%
-      }
-      \strng{namehash}{6ffa05b065085a4d7d4d45f5e13bed2e}
-      \strng{fullhash}{6ffa05b065085a4d7d4d45f5e13bed2e}
-      \strng{bibnamehash}{6ffa05b065085a4d7d4d45f5e13bed2e}
-      \strng{authorbibnamehash}{6ffa05b065085a4d7d4d45f5e13bed2e}
-      \strng{authornamehash}{6ffa05b065085a4d7d4d45f5e13bed2e}
-      \strng{authorfullhash}{6ffa05b065085a4d7d4d45f5e13bed2e}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Time Series Analysis: Forecasting and Control}
-      \field{year}{1970}
-    \endentry
-    \entry{box2015time}{book}{}
-      \name{author}{4}{}{%
-        {{un=0,uniquepart=base,hash=d30289ba50f0f7219fb405bc35b8b71c}{%
-           family={Box},
-           familyi={B\bibinitperiod},
-           given={George\bibnamedelimb E.\bibnamedelimi P.},
-           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim P\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=47888ee6b97a184c6a17093aeb509b29}{%
-           family={Jenkins},
-           familyi={J\bibinitperiod},
-           given={Gwilym\bibnamedelima M.},
-           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=64798b045379893d750ad3f089861bad}{%
-           family={Reinsel},
-           familyi={R\bibinitperiod},
-           given={Gregory\bibnamedelima C.},
-           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=916fd57423e9b7ed0d3ba70c92287892}{%
-           family={Ljung},
-           familyi={L\bibinitperiod},
-           given={Greta\bibnamedelima M.},
-           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{location}{1}{%
-        {Hoboken}%
-      }
-      \list{publisher}{1}{%
-        {John Wiley \& Sons}%
-      }
-      \strng{namehash}{a889686a50c7749def33de6826e92748}
-      \strng{fullhash}{73d0cc2792e602f1e990aa353e1752fd}
-      \strng{bibnamehash}{73d0cc2792e602f1e990aa353e1752fd}
-      \strng{authorbibnamehash}{73d0cc2792e602f1e990aa353e1752fd}
-      \strng{authornamehash}{a889686a50c7749def33de6826e92748}
-      \strng{authorfullhash}{73d0cc2792e602f1e990aa353e1752fd}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{5}
-      \field{isbn}{978-1118675021}
-      \field{title}{Time Series Analysis: Forecasting and Control}
-      \field{year}{2015}
-      \verb{doi}
-      \verb 10.1002/9781118619193
-      \endverb
-    \endentry
     \entry{brown2020language}{inproceedings}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -536,44 +447,6 @@
       \verb 10.1145/2939672.2939785
       \endverb
     \endentry
-    \entry{engle1987cointegration}{article}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=d491df6781389ebb4ef255c1ec0ca7ed}{%
-           family={Engle},
-           familyi={E\bibinitperiod},
-           given={Robert\bibnamedelima F.},
-           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=90c4f36411724ec312077a54a0f71d60}{%
-           family={Granger},
-           familyi={G\bibinitperiod},
-           given={C.\bibnamedelimi W.\bibnamedelimi J.},
-           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{dd8df6c93e06c74f74a730192afa1433}
-      \strng{fullhash}{dd8df6c93e06c74f74a730192afa1433}
-      \strng{bibnamehash}{dd8df6c93e06c74f74a730192afa1433}
-      \strng{authorbibnamehash}{dd8df6c93e06c74f74a730192afa1433}
-      \strng{authornamehash}{dd8df6c93e06c74f74a730192afa1433}
-      \strng{authorfullhash}{dd8df6c93e06c74f74a730192afa1433}
-      \field{sortinit}{E}
-      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{author}
-      \field{journaltitle}{Econometrica}
-      \field{number}{2}
-      \field{title}{Co-integration and Error Correction: Representation, Estimation, and Testing}
-      \field{volume}{55}
-      \field{year}{1987}
-      \field{pages}{251\bibrangedash 276}
-      \range{pages}{26}
-      \verb{doi}
-      \verb 10.2307/1913236
-      \endverb
-    \endentry
     \entry{hamilton2009causes}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=f1528bc518ebb8f6103311513805ac7d}{%
@@ -683,49 +556,49 @@
       \verb{doi}
       \verb 10.1007/978-0-387-84858-7
       \endverb
-      \verb{urlraw}
-      \verb https://hastie.su.domains/ElemStatLearn/
-      \endverb
-      \verb{url}
-      \verb https://hastie.su.domains/ElemStatLearn/
-      \endverb
     \endentry
-    \entry{hochreiter1997long}{article}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=41b31e29fb2bdbf9f5c9c1b0d5b3e815}{%
-           family={Hochreiter},
+    \entry{ho2002comparative}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=03e30a0045c4fabac1219fbff522d3cf}{%
+           family={Ho},
            familyi={H\bibinitperiod},
-           given={Sepp},
+           given={S.L.},
            giveni={S\bibinitperiod},
            givenun=0}}%
-        {{un=0,uniquepart=base,hash=288bdbcfe1b91ad7484d7a24f74f99ed}{%
-           family={Schmidhuber},
-           familyi={S\bibinitperiod},
-           given={Jürgen},
-           giveni={J\bibinitperiod},
+        {{un=0,uniquepart=base,hash=cd95222338172c4d844983a51838755a}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=19e7c69eb3d1893ac6928e0ab837460a}{%
+           family={Goh},
+           familyi={G\bibinitperiod},
+           given={T.N.},
+           giveni={T\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{4c2e1e2e1ac91e1df9d4f7b85ebe39b4}
-      \strng{fullhash}{4c2e1e2e1ac91e1df9d4f7b85ebe39b4}
-      \strng{bibnamehash}{4c2e1e2e1ac91e1df9d4f7b85ebe39b4}
-      \strng{authorbibnamehash}{4c2e1e2e1ac91e1df9d4f7b85ebe39b4}
-      \strng{authornamehash}{4c2e1e2e1ac91e1df9d4f7b85ebe39b4}
-      \strng{authorfullhash}{4c2e1e2e1ac91e1df9d4f7b85ebe39b4}
+      \strng{namehash}{6d087e15f7aff8a188246f6da8d3d1a6}
+      \strng{fullhash}{6d087e15f7aff8a188246f6da8d3d1a6}
+      \strng{bibnamehash}{6d087e15f7aff8a188246f6da8d3d1a6}
+      \strng{authorbibnamehash}{6d087e15f7aff8a188246f6da8d3d1a6}
+      \strng{authornamehash}{6d087e15f7aff8a188246f6da8d3d1a6}
+      \strng{authorfullhash}{6d087e15f7aff8a188246f6da8d3d1a6}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{author}
-      \field{journaltitle}{Neural Computation}
-      \field{number}{8}
-      \field{title}{Long Short-Term Memory}
-      \field{volume}{9}
-      \field{year}{1997}
-      \field{pages}{1735\bibrangedash 1780}
-      \range{pages}{46}
+      \field{journaltitle}{Computers \& Industrial Engineering}
+      \field{number}{1--2}
+      \field{title}{A comparative study of neural network and Box-Jenkins ARIMA modeling in time series prediction}
+      \field{volume}{42}
+      \field{year}{2002}
+      \field{pages}{145\bibrangedash 158}
+      \range{pages}{14}
       \verb{doi}
-      \verb 10.1162/neco.1997.9.8.1735
+      \verb 10.1016/S0360-8352(02)00036-0
       \endverb
     \endentry
     \entry{hodson2022root}{article}{}
@@ -846,40 +719,6 @@
       \verb 10.1016/j.ijforecast.2006.03.001
       \endverb
     \endentry
-    \entry{johansen1995likelihood}{book}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=fa1655c028c92b8ef87d909112f82026}{%
-           family={Johansen},
-           familyi={J\bibinitperiod},
-           given={Søren},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{location}{1}{%
-        {Oxford}%
-      }
-      \list{publisher}{1}{%
-        {Oxford University Press}%
-      }
-      \strng{namehash}{fa1655c028c92b8ef87d909112f82026}
-      \strng{fullhash}{fa1655c028c92b8ef87d909112f82026}
-      \strng{bibnamehash}{fa1655c028c92b8ef87d909112f82026}
-      \strng{authorbibnamehash}{fa1655c028c92b8ef87d909112f82026}
-      \strng{authornamehash}{fa1655c028c92b8ef87d909112f82026}
-      \strng{authorfullhash}{fa1655c028c92b8ef87d909112f82026}
-      \field{sortinit}{J}
-      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{978-0198774501}
-      \field{title}{Likelihood-Based Inference in Cointegrated Vector Autoregressive Models}
-      \field{year}{1995}
-      \verb{doi}
-      \verb 10.1093/0198774508.001.0001
-      \endverb
-    \endentry
     \entry{lundberg2017unified}{inproceedings}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=2a1075150e1e1dad8127b019f7ca9031}{%
@@ -917,7 +756,7 @@
       \verb 10.48550/arXiv.1705.07874
       \endverb
     \endentry
-    \entry{lutkepohl2011vector}{incollection}{}
+    \entry{lutkepohl2005}{book}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=d400c31862099db9f37a97b35e10814d}{%
            family={Lütkepohl},
@@ -925,16 +764,6 @@
            given={Helmut},
            giveni={H\bibinitperiod},
            givenun=0}}%
-      }
-      \name{editor}{1}{}{%
-        {{hash=c3c40780eeb0a8ca912ccd7d29918eb8}{%
-           family={Lovric},
-           familyi={L\bibinitperiod},
-           given={Miodrag},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Berlin}%
       }
       \list{publisher}{1}{%
         {Springer}%
@@ -945,22 +774,16 @@
       \strng{authorbibnamehash}{d400c31862099db9f37a97b35e10814d}
       \strng{authornamehash}{d400c31862099db9f37a97b35e10814d}
       \strng{authorfullhash}{d400c31862099db9f37a97b35e10814d}
-      \strng{editorbibnamehash}{c3c40780eeb0a8ca912ccd7d29918eb8}
-      \strng{editornamehash}{c3c40780eeb0a8ca912ccd7d29918eb8}
-      \strng{editorfullhash}{c3c40780eeb0a8ca912ccd7d29918eb8}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{International Encyclopedia of Statistical Science}
-      \field{title}{Vector Autoregressive Models}
-      \field{year}{2011}
-      \field{pages}{1645\bibrangedash 1647}
-      \range{pages}{3}
+      \field{title}{New Introduction to Multiple Time Series Analysis}
+      \field{year}{2005}
       \verb{doi}
-      \verb 10.1007/978-3-642-04898-2_605
+      \verb 10.1007/978-3-540-27752-1
       \endverb
     \endentry
     \entry{martinezplumed2021crisp}{article}{}
@@ -1068,6 +891,39 @@
       \field{isbn}{978-0134733821}
       \field{title}{The Economics of Money, Banking, and Financial Markets}
       \field{year}{2019}
+    \endentry
+    \entry{molnar2025}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1519de263bd388a2ce312e7171b96d0d}{%
+           family={Molnar},
+           familyi={M\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1519de263bd388a2ce312e7171b96d0d}
+      \strng{fullhash}{1519de263bd388a2ce312e7171b96d0d}
+      \strng{bibnamehash}{1519de263bd388a2ce312e7171b96d0d}
+      \strng{authorbibnamehash}{1519de263bd388a2ce312e7171b96d0d}
+      \strng{authornamehash}{1519de263bd388a2ce312e7171b96d0d}
+      \strng{authorfullhash}{1519de263bd388a2ce312e7171b96d0d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{isbn}{978-3-911578-03-5}
+      \field{subtitle}{A Guide for Making Black Box Models Explainable}
+      \field{title}{Interpretable Machine Learning}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://christophm.github.io/interpretable-ml-book
+      \endverb
+      \verb{url}
+      \verb https://christophm.github.io/interpretable-ml-book
+      \endverb
     \endentry
     \entry{moscatelli2020corporate}{article}{}
       \name{author}{4}{}{%
@@ -1472,44 +1328,6 @@
       \verb 10.1016/j.procs.2021.01.199
       \endverb
     \endentry
-    \entry{schuster1997bidirectional}{article}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=29ea22df63f174ac629e9ef100b40484}{%
-           family={Schuster},
-           familyi={S\bibinitperiod},
-           given={Mike},
-           giveni={M\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=b1d3b7d330a0b9cd14b9467a0dfa8189}{%
-           family={Paliwal},
-           familyi={P\bibinitperiod},
-           given={Kuldip\bibnamedelima K.},
-           giveni={K\bibinitperiod\bibinitdelim K\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{2f2edc15114454b7b2f9bea34478b390}
-      \strng{fullhash}{2f2edc15114454b7b2f9bea34478b390}
-      \strng{bibnamehash}{2f2edc15114454b7b2f9bea34478b390}
-      \strng{authorbibnamehash}{2f2edc15114454b7b2f9bea34478b390}
-      \strng{authornamehash}{2f2edc15114454b7b2f9bea34478b390}
-      \strng{authorfullhash}{2f2edc15114454b7b2f9bea34478b390}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{author}
-      \field{journaltitle}{IEEE Transactions on Signal Processing}
-      \field{number}{11}
-      \field{title}{Bidirectional Recurrent Neural Networks}
-      \field{volume}{45}
-      \field{year}{1997}
-      \field{pages}{2673\bibrangedash 2681}
-      \range{pages}{9}
-      \verb{doi}
-      \verb 10.1109/78.650093
-      \endverb
-    \endentry
     \entry{sezer2020financial}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=f69668254044088a254b64c85d2c9a27}{%
@@ -1553,38 +1371,6 @@
       \verb 10.1016/j.asoc.2020.106181
       \endverb
     \endentry
-    \entry{sims1980macroeconomics}{article}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=6ea5ed711258737020e21f785822b8e5}{%
-           family={Sims},
-           familyi={S\bibinitperiod},
-           given={Christopher\bibnamedelima A.},
-           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{6ea5ed711258737020e21f785822b8e5}
-      \strng{fullhash}{6ea5ed711258737020e21f785822b8e5}
-      \strng{bibnamehash}{6ea5ed711258737020e21f785822b8e5}
-      \strng{authorbibnamehash}{6ea5ed711258737020e21f785822b8e5}
-      \strng{authornamehash}{6ea5ed711258737020e21f785822b8e5}
-      \strng{authorfullhash}{6ea5ed711258737020e21f785822b8e5}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{author}
-      \field{journaltitle}{Econometrica}
-      \field{number}{1}
-      \field{title}{Macroeconomics and Reality}
-      \field{volume}{48}
-      \field{year}{1980}
-      \field{pages}{1\bibrangedash 48}
-      \range{pages}{48}
-      \verb{doi}
-      \verb 10.2307/1912017
-      \endverb
-    \endentry
     \entry{stock2012disentangling}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=2d01c3b46f4061430cc9eb2a1f6408a4}{%
@@ -1621,6 +1407,51 @@
       \range{pages}{55}
       \verb{doi}
       \verb 10.1353/eca.2012.0005
+      \endverb
+    \endentry
+    \entry{istiakesunny2020}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fc9b10c433f17fe1ed837cb35d290fd3}{%
+           family={Sunny},
+           familyi={S\bibinitperiod},
+           given={Md.\bibnamedelimi Arif\bibnamedelima Istiake},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=817f7cf675b1277f5c27420e674ccd7a}{%
+           family={Maswood},
+           familyi={M\bibinitperiod},
+           given={Mirza\bibnamedelimb Mohd\bibnamedelima Shahriar},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05fe6cd93af61d16678ff43ca580eb83}{%
+           family={Alharbi},
+           familyi={A\bibinitperiod},
+           given={Abdullah\bibnamedelima G.},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{142d8b21d485741b097371b5ad184b18}
+      \strng{fullhash}{142d8b21d485741b097371b5ad184b18}
+      \strng{bibnamehash}{142d8b21d485741b097371b5ad184b18}
+      \strng{authorbibnamehash}{142d8b21d485741b097371b5ad184b18}
+      \strng{authornamehash}{142d8b21d485741b097371b5ad184b18}
+      \strng{authorfullhash}{142d8b21d485741b097371b5ad184b18}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of NILES 2020: 2nd Novel Intelligent and Leading Emerging Sciences Conference}
+      \field{title}{Deep Learning-Based Stock Price Prediction Using LSTM and Bi-Directional LSTM Model}
+      \field{year}{2020}
+      \field{pages}{87\bibrangedash 92}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/NILES50944.2020.9257942
       \endverb
     \endentry
     \entry{svensson2003what}{article}{}
@@ -1716,6 +1547,44 @@
       \range{pages}{20}
       \verb{doi}
       \verb 10.1016/0167-2231(93)90009-L
+      \endverb
+    \endentry
+    \entry{tsoku2024hybrid}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1110c1adc4371a6227b46a2135824416}{%
+           family={Tsoku},
+           familyi={T\bibinitperiod},
+           given={J.T.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=15f34f41c81c3be7d47cf22652b55b73}{%
+           family={Phiri},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6c10ece2dca58a355d5ca04e213a253f}
+      \strng{fullhash}{6c10ece2dca58a355d5ca04e213a253f}
+      \strng{bibnamehash}{6c10ece2dca58a355d5ca04e213a253f}
+      \strng{authorbibnamehash}{6c10ece2dca58a355d5ca04e213a253f}
+      \strng{authornamehash}{6c10ece2dca58a355d5ca04e213a253f}
+      \strng{authorfullhash}{6c10ece2dca58a355d5ca04e213a253f}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{International Journal of Financial Studies}
+      \field{number}{4}
+      \field{title}{A Hybrid of Box--Jenkins ARIMA Model and Neural Networks for Forecasting South African Crude Oil Prices}
+      \field{volume}{12}
+      \field{year}{2024}
+      \field{pages}{118}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/ijfs12040118
       \endverb
     \endentry
     \entry{warjiyo2019central}{book}{}
@@ -1863,8 +1732,7 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{breiman2001random}
-  \missing{molnar2022interpretable}
+  \missing{box2008time}
 \endrefsection
 \endinput
 

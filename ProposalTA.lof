@@ -15,6 +15,10 @@
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {indonesian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {indonesian}{}\relax 
 \addvspace {10\p@ }
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
@@ -112,6 +116,14 @@
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
+\contentsline {figure}{\numberline {II.1}{\ignorespaces Arsitektur LSTM \blx@tocontentsinit {0}\autocite {istiakesunny2020}}}{15}{figure.caption.3}%
+\babel@toc {english}{}\relax 
+\babel@toc {indonesian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {indonesian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {indonesian}{}\relax 
+\contentsline {figure}{\numberline {II.2}{\ignorespaces Arsitektur Bi-LSTM \blx@tocontentsinit {0}\autocite {istiakesunny2020}}}{16}{figure.caption.4}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
@@ -126,20 +138,18 @@
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
+\contentsline {figure}{\numberline {II.3}{\ignorespaces Ilustrasi \textit {Black Box} dan \textit {Interpretable} Model \blx@tocontentsinit {0}\autocite {hui2022ethical}}}{19}{figure.caption.5}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
-\contentsline {figure}{\numberline {II.1}{\ignorespaces Ilustrasi \textit {Black Box} dan \textit {Interpretable} Model \blx@tocontentsinit {0}\autocite {hui2022ethical}}}{18}{figure.caption.3}%
+\contentsline {figure}{\numberline {II.4}{\ignorespaces Ilustrasi Taksonomi Metode XAI \blx@tocontentsinit {0}\autocite {adadi2018peeking}}}{19}{figure.caption.6}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
-\babel@toc {english}{}\relax 
-\babel@toc {indonesian}{}\relax 
-\contentsline {figure}{\numberline {II.2}{\ignorespaces Ilustrasi Taksonomi Metode XAI \blx@tocontentsinit {0}\autocite {adadi2018peeking}}}{19}{figure.caption.4}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
@@ -179,21 +189,15 @@
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {III.1}{\ignorespaces Proses Penetapan BI-Rate Saat Ini}}{29}{figure.caption.5}%
+\contentsline {figure}{\numberline {III.1}{\ignorespaces Proses Penetapan BI-Rate Saat Ini}}{29}{figure.caption.7}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
-\contentsline {figure}{\numberline {III.2}{\ignorespaces Gambaran Sistem Prediksi BI-Rate Terdahulu \blx@tocontentsinit {0}\autocite {putri2019prediksi}}}{30}{figure.caption.6}%
+\contentsline {figure}{\numberline {III.2}{\ignorespaces Gambaran Sistem Prediksi BI-Rate Terdahulu \blx@tocontentsinit {0}\autocite {putri2019prediksi}}}{30}{figure.caption.8}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {IV.1}{\ignorespaces Desain Solusi Pengerjaan Tugas Akhir}}{39}{figure.caption.10}%
+\contentsline {figure}{\numberline {IV.1}{\ignorespaces Desain Solusi Pengerjaan Tugas Akhir}}{39}{figure.caption.12}%
 \addvspace {10\p@ }
-\babel@toc {english}{}\relax 
-\babel@toc {indonesian}{}\relax 
-\babel@toc {english}{}\relax 
-\babel@toc {indonesian}{}\relax 
-\babel@toc {english}{}\relax 
-\babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 

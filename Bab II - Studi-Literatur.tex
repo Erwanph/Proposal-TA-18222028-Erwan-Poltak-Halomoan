@@ -186,65 +186,74 @@ dalam penelitian ini.
 \section{Model Prediksi Ekonomi Berbasis \textit{Time Series}}
 \label{sec:model-prediksi}
 
-Prediksi data \textit{deret waktu} (\textit{time series forecasting}) bertujuan untuk memodelkan perilaku dinamis suatu variabel berdasarkan urutan nilai historisnya untuk memproyeksikan nilai masa depan \autocite{box1970time}. Dalam konteks ekonomi makro, tantangan utama prediksi ini terletak pada karakteristik data yang sering kali mengandung autokorelasi tinggi, volatilitas yang berubah-ubah (\textit{heteroskedasticity}), dan interaksi non-linear antarvariabel yang kompleks. Secara historis, pendekatan ini didominasi oleh model ekonometrika linear. Namun, seiring dengan ledakan volume data (\textit{Big Data}) dan kebutuhan akurasi yang lebih tinggi, terjadi pergeseran paradigma menuju penggunaan model \textit{Machine Learning} dan \textit{Deep Learning}. Varian menegaskan bahwa teknik \textit{Machine Learning} menawarkan alat baru bagi para ekonom untuk menangkap pola non-linear yang sering kali terlewatkan oleh model regresi standar, menjadikannya komplemen yang penting bagi metode tradisional.
+
+Prediksi data \textit{deret waktu} (\textit{time series forecasting}) bertujuan untuk 
+memodelkan perilaku dinamis suatu variabel berdasarkan urutan nilai historisnya untuk 
+memproyeksikan nilai masa depan \autocite{box2008time}. Dalam konteks ekonomi makro, 
+tantangan utama prediksi ini terletak pada karakteristik data yang sering kali mengandung 
+autokorelasi tinggi, volatilitas yang berubah-ubah (\textit{heteroskedasticity}), 
+dan interaksi non-linear antarvariabel yang kompleks. Secara historis, pendekatan ini 
+didominasi oleh model ekonometrika linear. Namun, seiring dengan ledakan volume data 
+(\textit{Big Data}) dan kebutuhan akurasi yang lebih tinggi, terjadi pergeseran paradigma 
+menuju penggunaan model \textit{Machine Learning} dan \textit{Deep Learning}. Varian 
+menegaskan bahwa teknik \textit{Machine Learning} menawarkan alat baru bagi para ekonom 
+untuk menangkap pola non-linear yang sering kali terlewatkan oleh model regresi standar, 
+menjadikannya komplemen yang penting bagi metode tradisional.
+
 
 \subsection{Model Tradisional (Ekonometrika)}
-Pada subbab ini dibahas model ekonometrika tradisional yang menjadi landasan awal dalam prediksi ekonomi karena kemampuannya dalam menjelaskan hubungan yang struktural antarvariabel secara transparan, meskipun kinerjanya yang terbatas pada asumsi linearitas yang kuat (ini tolong kasih sitasi).
+Pada subbab ini dibahas model ekonometrika tradisional yang menjadi landasan awal dalam 
+prediksi ekonomi karena kemampuannya dalam menjelaskan hubungan yang struktural antarvariabel 
+secara transparan melalui model berbasis teori dan asumsi statistik. Namun, sebagian besar 
+model tradisional terbatas dalam menangkap pola dinamika kompleks pada data yang volatilitasnya 
+tinggi \autocite{mishkin2019economics}.
+
 
 \subsubsection{Autoregressive Integrated Moving Average (ARIMA)}
-ARIMA adalah model statistik univariat yang banyak digunakan untuk \textit{time series forecasting}. Model ini dikembangkan oleh Box dan Jenkins pada tahun 1970 dan menjadi standar dalam prediksi ekonomi \autocite{box1970time}. ARIMA terdiri dari tiga komponen utama:
+ARIMA merupakan salah satu metode peramalan deret waktu yang paling banyak digunakan. Metode ini menggabungkan komponen autoregresif, \textit{differencing}, dan 
+\textit{moving average} untuk menghasilkan model univariat yang mampu menangani pola stasioner dan tren sederhana. ARIMA 
+tetap menjadi standar dalam peramalan jangka pendek, terutama ketika data memiliki pola linear atau fluktuasi yang 
+relatif stabil \autocite{ho2002comparative}.
+
+
+ARIMA terdiri dari tiga komponen utama:
 \begin{enumerate}
-\item \textbf{Autoregressive (AR)}\\
+\item \textbf{\textit{Autoregressive} (AR)}\\
 Komponen ini memodelkan ketergantungan nilai saat ini terhadap nilai-nilai masa lalu. Parameter $p$ menunjukkan jumlah \textit{lag} yang digunakan.
-\item \textbf{Integrated (I)}\\
+\item \textbf{\textit{Integrated} (I)}\\
 Komponen ini menangani \textit{non-stationarity} seperti ada tren tertentu, melalui proses \textit{differencing}. Parameter $d$ menunjukkan \textit{order differencing} yang diperlukan untuk mencapai \textit{stationarity}.
-\item \textbf{Moving Average (MA)}\\
+\item \textbf{\textit{Moving Average} (MA)}\\
 Komponen ini memodelkan ketergantungan terhadap kesalahan prediksi atau \textit{error term} masa lalu. Parameter $q$ menunjukkan jumlah \textit{lag error} yang digunakan untuk mengoreksi prediksi.
 \end{enumerate}
 
-Secara matematis, model ARIMA(p,d,q) dapat dituliskan seperti pada Persamaan \ref{eq:arima}:
-
-\begin{equation}
-\phi(B)(1-B)^d y_t = \theta(B) \epsilon_t
-\label{eq:arima}
-\end{equation}
-
-Dengan $\phi(B)$ adalah polinomial AR, $B$ adalah \textit{backshift operator}, $\theta(B)$ adalah operator polinomial MA, dan $\epsilon_t$ adalah \textit{white noise error} \autocite{box2015time}. Keunggulan utama ARIMA adalah efisiensinya pada data linear jangka pendek, tetapi model ini sering gagal menangkap volatilitas tinggi atau perubahan struktural mendadak (\textit{structural breaks}) yang umum terjadi dalam data ekonomi modern.
+Walau ARIMA efisien untuk pola linear, model ini biasanya kurang mampu menangkap volatilitas ekstrem, non-linearitas yang kuat, atau pola kompleks jangka panjang yang umum pada data keuangan modern \autocite{tsoku2024hybrid}.
 
 \subsubsection{Vector Autoregression (VAR)}
-VAR adalah perluasan multivariat dari model \textit{autoregressive} yang dikembangkan oleh Sims \autocite{sims1980macroeconomics}. VAR memodelkan sistem variabel endogen, yaitu setiap variabel dijelaskan oleh nilai \textit{lag}-nya sendiri dan nilai \textit{lag} variabel lain dalam sistem. Model VAR(p) untuk $k$ variabel dapat dituliskan sebagai:
+VAR merupakan pengembangan multivariat dari model autoregresif dan diperkenalkan sebagai alternatif bagi model struktural makroekonomi. Tidak seperti pendekatan berbasis persamaan simultan, VAR memperlakukan seluruh variabel sebagai endogen dan memodelkan hubungan dinamis di antara mereka menggunakan \textit{lag} masing-masing variabel. Pendekatan ini memungkinkan analisis interaksi antar variabel dalam suatu sistem tanpa memaksakan banyak kendala struktural \autocite{lutkepohl2005}.
 
-\begin{equation}
-Y_t = c + A_1 Y_{t-1} + \dots + A_p Y_{t-p} + u_t
-\label{eq:var}
-\end{equation}
+Secara umum, VAR(p) memodelkan vektor variabel endogen $Y_t$ menggunakan konstanta, lag hingga orde $p$, dan komponen error yang diasumsikan sebagai white noise. Pendekatan ini banyak digunakan dalam analisis makroekonomi, kebijakan moneter, dan pasar keuangan karena kemampuannya memodelkan hubungan simultan antar variabel.
 
-Dengan $Y_t$ adalah vektor $(K \times 1)$ variabel endogen, $c$ adalah vektor konstanta, $A_i$ adalah matriks koefisien, dan $u_t$ adalah vektor \textit{white noise} \autocite{lutkepohl2011vector}.
-
-\subsubsection{Vector Error Correction Model (VECM)}
-VECM adalah model VAR yang telah dimodifikasi untuk menangkap hubungan kointegrasi antar variabel \textit{non-stationary}. Model ini dikembangkan dari konsep \textit{cointegration} oleh Engle dan Granger dan merupakan \textit{special case} dari VAR dengan \textit{restrictions} untuk hubungan jangka panjang \autocite{engle1987cointegration}. Model VECM dapat dituliskan sebagai:
-
-\begin{equation}
-\Delta Y_t = \Pi Y_{t-1} + \sum_{i=1}^{p-1} \Gamma_i \Delta Y_{t-i} + \epsilon_t
-\label{eq:vecm}
-\end{equation}
-
-Dengan $\Pi = \alpha \beta'$ merepresentasikan hubungan kointegrasi jangka panjang \autocite{johansen1995likelihood}.
+Meskipun kuat secara interpretasi dan kaya informasi, model VAR tetap menghadapi keterbatasan pada data yang sangat non-linear atau ketika interaksi antarvariabel berubah secara drastis dari waktu ke waktu.
 
 \subsection{Model \textit{Machine Learning}}
-Keterbatasan model ekonometrika tradisional dalam menangkap pola non-linear dapat diatasi oleh algoritma ML. Dalam penelitian ini, model yang digunakan fokus pada pendekatan \textit{Ensemble Learning}. \textit{Ensemble Learning} adalah paradigma ML yang menggabungkan prediksi dari beberapa model dasar (\textit{base learners}) untuk menghasilkan model prediktif yang lebih optimal \autocite{hastie2009elements}. Dua teknik utama dalam \textit{Ensemble Learning} yang digunakan adalah \textit{Bootstrap Aggregating} (Bagging) dan \textit{Boosting}. Bagging bertujuan mengurangi varians dengan melatih model secara paralel pada subset data acak, sedangkan \textit{Boosting} bertujuan mengurangi bias dengan melatih model secara sekuensial untuk memperbaiki kesalahan model sebelumnya.
+Keterbatasan model ekonometrika tradisional dalam menangkap pola non-linear dapat diatasi oleh algoritma ML. Dalam penelitian ini, model yang digunakan fokus pada pendekatan \textit{Ensemble Learning}. \textit{Ensemble Learning} adalah paradigma ML yang menggabungkan prediksi dari beberapa model dasar (\textit{base learners}) untuk menghasilkan model prediktif yang lebih optimal. Dua teknik utama dalam \textit{Ensemble Learning} yang digunakan adalah \textit{Bootstrap Aggregating} (\textit{Bagging}) dan \textit{Boosting}. Bagging bertujuan mengurangi varians dengan melatih model secara paralel pada subset data acak, sedangkan \textit{Boosting} bertujuan mengurangi bias dengan melatih model secara sekuensial untuk memperbaiki kesalahan model sebelumnya \autocite{hastie2009elements}.
 
 \subsubsection{Random Forest Regressor}
-\textit{Random Forest}, yang diperkenalkan oleh Breiman, adalah implementasi algoritma Bagging yang menggunakan pohon keputusan (\textit{decision trees}) sebagai model dasar \autocite{breiman2001random}. Algoritma ini bekerja dengan langkah-langkah berikut:
+\textit{Random Forest} adalah metode \textit{ensemble learning} berbasis Bagging yang menggunakan banyak pohon keputusan (\textit{decision trees}) sebagai model dasar. Berbeda dari Bagging standar, \textit{Random Forest} menambahkan proses pemilihan fitur secara acak pada setiap pemecahan simpul, sehingga pohon-pohon yang terbentuk menjadi lebih tidak berkorelasi \autocite{hastie2009elements}.
+
+Algoritma \textit{Random Forest} bekerja melalui langkah-langkah berikut:
 \begin{enumerate}
-\item \textbf{Bootstrap Sampling}\\
-Model akan mengambil $N$ sampel acak dari data latih dengan pengembalian (\textit{replacement}).
-\item \textbf{Konstruksi Pohon}\\
-Model membangun pohon keputusan untuk setiap sampel. Pada setiap pemecahan simpul (\textit{node split}), algoritma hanya akan mempertimbangkan subset acak dari fitur, bukan seluruhnya. Hal ini akan memaksa pohon-pohon yang terbentuk menjadi tidak berkorelasi.
-\item \textbf{Agregasi}\\
-Prediksi akhir pada model ini diperoleh dengan menghitung nilai rata-rata output dari seluruh pohon individu.
+\item \textit{\textbf{Bootstrap Sampling}} \\
+Dari data latih berukuran $N$, model mengambil sampel acak dengan pengembalian (\textit{bootstrap sample}) untuk membentuk dataset bagi setiap pohon keputusan.
+\item \textbf{Random Feature Selection} \\
+Pada setiap pemisahan simpul, hanya subset acak dari fitur yang dipertimbangkan. Mekanisme ini mengurangi korelasi antar pohon dan meningkatkan stabilitas prediksi.
+\item \textbf{Konstruksi Banyak Pohon Keputusan} \\
+Setiap pohon dilatih secara independen menggunakan dataset bootstrap dan subset fitur acak pada setiap simpul.
+\item \textbf{Agregasi Prediksi} \\
+Untuk tugas regresi, prediksi akhir diperoleh dengan merata-ratakan keluaran seluruh pohon dalam ensemble.
 \end{enumerate}
-Mekanisme ini membuat \textit{Random Forest} sangat tahan terhadap \textit{noise} dan \textit{outlier} dalam data keuangan karena kesalahan acak pada satu pohon akan saling menghilangkan saat dirata-ratakan dengan pohon lain. Hal ini meminimalisir risiko \textit{overfitting} pada model dengan signifikan.
+
+Dengan membangun banyak pohon yang tidak berkorelasi dan menggabungkannya secara agregat, \textit{Random Forest} secara efektif mampu menurunkan varians model tanpa meningkatkan bias secara signifikan. Sifat ini membuat model tahan terhadap \textit{noise} dan \textit{outlier}, serta mengurangi risiko \textit{overfitting}—yang merupakan keuntungan penting dalam pemodelan deret waktu keuangan dan makroekonomi.
 
 \subsubsection{Extreme Gradient Boosting (XGB)}
 XGB adalah implementasi algoritma \textit{Gradient Boosting} yang sangat efisien dan terukur, dikembangkan oleh Chen dan Guestrin \autocite{chen2016xgboost}. Berbeda dengan \textit{Random Forest} yang paralel, XGB menggunakan prinsip \textit{Boosting}, yaitu pohon dibangun secara sekuensial. Setiap pohon baru dilatih secara spesifik untuk memprediksi dan memperbaiki sisa kesalahan (\textit{residual}) yang dihasilkan oleh gabungan pohon-pohon sebelumnya. Proses kerja XGB secara rinci meliputi:
@@ -266,50 +275,49 @@ L(\phi) = \sum_i l(\hat{y}_i, y_i) + \sum_k \Omega(f_k)
 Dengan $\Omega(f_k) = \gamma T + \frac{1}{2}\lambda ||w||^2$ mencegah \textit{overfitting} dengan membatasi kompleksitas pohon. XGB dipilih dalam penelitian ini karena fitur \textit{sparsity-aware split finding} yang dimilikinya dan mampu menangani \textit{missing values} secara otomatis, kemampuannya untuk menangkap interaksi non-linear yang kompleks antarvariabel ekonomi, regularisasi bawaan yang membuatnya lebih aman untuk jumlah sampel terbatas, dan kecepatan komputasi yang tinggi dibanding algoritma \textit{boosting} lainnya \autocite{chen2016xgboost}.
 
 \subsection{Model \textit{Deep Learning}}
-Model \textit{Deep Learning} berbasis jaringan saraf tiruan (\textit{Neural Networks}) digunakan untuk menangkap struktur dependensi jangka panjang (\textit{long-term dependencies}) yang sering kali luput dari model \textit{Machine Learning} konvensional. Sezer dkk. mencatat bahwa dalam domain keuangan, model berbasis LSTM menjadi arsitektur dominan karena keunggulannya dalam memproses data sekuensial \autocite{sezer2020financial}.
+Model \textit{Deep Learning} berbasis jaringan saraf tiruan (\textit{Neural Networks}) memiliki kemampuan untuk menangkap pola non-linear dan dependensi jangka panjang (\textit{long-term dependencies}) yang sering kali tidak tertangkap oleh model \textit{Machine Learning} konvensional. Dalam konteks pemodelan deret waktu keuangan, penggunaan arsitektur LSTM dan Bi-LSTM terbukti memberikan kinera prediksi yang lebih baik karena kemampuannya dalam mengolah informasi sekuensial secara lebih efektif \autocite{istiakesunny2020}.
 
 \subsubsection{Long Short-Term Memory (LSTM)}
-LSTM adalah varian khusus dari \textit{Recurrent Neural Networks} (RNN) yang dirancang oleh Hochreiter dan Schmidhuber untuk mengatasi masalah \textit{vanishing gradient}, yaitu kondisi ketika RNN gagal mempelajari pola dari data masa lalu yang jauh karena gradien kesalahan menyusut mendekati nol selama proses pelatihan (\textit{backpropagation}) \autocite{hochreiter1997long}. Solusi LSTM terletak pada struktur sel memori (\textit{memory cell}) yang dilindungi oleh tiga gerbang logika (\textit{gates}) untuk mengatur aliran informasi:
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=0.6\textwidth]{image/arsitektur_lstm.png}
+  \caption{Arsitektur LSTM \autocite{istiakesunny2020}}
+  \label{gambar:arsitektur-lstm}
+\end{figure}
+
+LSTM merupakan pengembangan dari \textit{Recurrent Neural Networks} (RNN) yang dirancang untuk mengatasi keterbatasan RNN dalam mempertahankan informasi jangka panjang. Arsitektur LSTM menggunakan \textit{memory cell} dan beberapa \textit{gates} untuk mengatur aliran informasi, sehingga model dapat memilih informasi mana yang perlu dipertahankan dan mana yang harus diabaikan \autocite{istiakesunny2020}.
+
+Secara konseptual, mekanisme utama dalam LSTM terdiri dari:
 
 \begin{enumerate}
-\item \textbf{Forget Gate}\\
-Model memutuskan informasi mana dari memori masa lalu yang sudah tidak relevan dan harus dibuang.
-\begin{equation}
-f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
-\label{eq:lstm_forget}
-\end{equation}
-
-\item \textbf{Input Gate}\\
-Model akan menentukan informasi baru apa dari input saat ini yang penting untuk disimpan ke dalam memori.
-\begin{equation}
-i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)
-\label{eq:lstm_input}
-\end{equation}
-
-\item \textbf{Output Gate}\\
-Model akan mengatur informasi apa dari memori internal yang akan diteruskan sebagai output ke langkah waktu berikutnya.
-\begin{equation}
-o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)
-\label{eq:lstm_output}
-\end{equation}
+\item \textit{\textbf{Forget Gate:}} Menentukan informasi mana dari masa lalu yang tidak lagi relevan dan dapat diabaikan.
+\item \textit{\textbf{Input Gate:}} Mengatur informasi baru apa yang layak disimpan ke dalam memori.
+\item \textit{\textbf{Output Gate:}} Mengendalikan informasi mana dari memori internal yang akan diteruskan sebagai keluaran pada langkah waktu berikutnya.
 \end{enumerate}
 
-Mekanisme ini memungkinkan LSTM untuk mempertahankan informasi penting (seperti dampak kebijakan moneter tahun lalu) dalam jangka waktu panjang dan secara selektif melupakan gangguan jangka pendek (\textit{noise}), menjadikannya sangat efektif untuk data ekonomi yang memiliki \textit{lag effect}.
+Melalui kombinasi ketiga mekanisme ini, LSTM mampu mempertahankan informasi penting selama rentang waktu yang panjang sekaligus menyaring \textit{noise} jangka pendek. Hal ini membuat LSTM sangat efektif dalam memodelkan deret waktu keuangan yang bersifat non-linear, memiliki volatilitas tinggi, dan menunjukkan pengaruh keterlambatan (\textit{lag effect}) \autocite{istiakesunny2020}.
 
 \subsubsection{Bidirectional Long Short-Term Memory (Bi-LSTM)}
-Bi-LSTM merupakan pengembangan arsitektur LSTM yang diperkenalkan oleh Schuster dan Paliwal \autocite{schuster1997bidirectional}. Jika LSTM standar hanya memproses informasi secara maju (\textit{forward}) dari masa lalu ke masa kini ($t-1 \rightarrow t$), Bi-LSTM memproses data dalam dua arah sekaligus menggunakan dua lapisan LSTM terpisah:
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=0.6\textwidth]{image/arsitektur_bilstm.png}
+  \caption{Arsitektur Bi-LSTM \autocite{istiakesunny2020}}
+  \label{gambar:arsitektur-bilstm}
+\end{figure}
+
+Bi-LSTM merupakan pengembangan arsitektur LSTM yang memproses urutan data dalam dua arah secara simultan. Dibandingkan hanya membaca sekuensi dari masa lalu ke masa kini, Bi-LSTM menambahkan lapisan kedua yang membaca urutan secara terbalik, yaitu dari masa depan ke masa lalu. Dengan demikian, model dapat memanfaatkan dua konteks sekaligus, yaitu informasi historis dan informasi \textit{future-aware} yang diperoleh selama pelatihan \autocite{istiakesunny2020}.
+
+Secara konseptual, Bi-LSTM terdiri dari:
 \begin{enumerate}
-\item \textbf{Forward Layer}: Model memproses urutan data dari awal ke akhir untuk menangkap konteks masa lalu.
-\item \textbf{Backward Layer}: Model akan memproses urutan data dari akhir ke awal untuk menangkap konteks masa depan dalam data latih.
+    \item \textbf{Forward Layer:} Model membaca urutan data dari awal ke akhir untuk menangkap pola yang bergantung pada informasi historis.
+    \item \textbf{Backward Layer:} Model membaca urutan data dari akhir ke awal untuk menangkap pola yang mungkin muncul setelah suatu titik waktu.
 \end{enumerate}
-Output akhir pada setiap langkah waktu ($y_t$) merupakan gabungan dari kedua lapisan tersebut yang biasanya melalui konkatenasi atau penjumlahan:
 
-\begin{equation}
-y_t = W_{\vec{h}} \vec{h}_t + W_{\overleftarrow{h}} \overleftarrow{h}_t + b_y
-\label{eq:bilstm}
-\end{equation}
-
-Output dari kedua lapisan ini kemudian digabungkan untuk menghasilkan representasi fitur yang lebih baik. Dalam konteks prediksi \textit{deret waktu}, pendekatan ini memungkinkan model untuk memahami struktur data secara lebih holistik, mendeteksi pola kausalitas dan korelasi yang mungkin terlewat jika hanya dilihat dari satu arah sekuensial \autocite{schuster1997bidirectional}.
+Keluaran akhir pada setiap langkah waktu diperoleh dengan menggabungkan representasi dari kedua arah tersebut. Pendekatan ini memberikan pemahaman konteks yang lebih kaya sehingga Bi-LSTM mampu menangkap pola deret waktu yang kompleks dan tidak sepenuhnya bersifat satu arah.
 
 \subsection{Metode Evaluasi Model}
 Pada subbab ini dijelaskan berbagai metrik yang digunakan untuk menilai kinerja model prediksi secara objektif. Akan digunakan beberapa metrik evaluasi standar yang mengukur akurasi dan kecocokan model.
@@ -482,13 +490,13 @@ kepada pengguna non-teknis \autocite{ribeiro2016why}.
 Permutation Feature Importance (PFI) adalah metode interpretasi model 
 yang diperkenalkan oleh Breiman (2001) untuk mengukur pentingnya fitur 
 dengan mengevaluasi penurunan kinerja model setelah fitur tersebut 
-di-permutasi atau diacak \autocite{breiman2001random}. 
+di-permutasi atau diacak. 
 Ide PFI adalah bahwa sebuah fitur dianggap penting jika mengacak 
 nilainya meningkatkan kesalahan prediksi model karena hal ini 
 menunjukkan bahwa model bergantung pada fitur tersebut untuk membuat 
 prediksi. Sebaliknya, jika mengacak fitur tidak mengubah kesalahan 
 prediksi model yang signifikan, maka fitur tersebut dianggap tidak 
-penting \autocite{molnar2022interpretable}.
+penting \autocite{molnar2025}.
 
 Algoritma PFI secara umum bekerja dengan langkah-langkah berikut: 
 \begin{enumerate}
@@ -517,7 +525,7 @@ penting ketika fitur-fitur dalam dataset saling berkorelasi
 satu fitur masih menyisakan informasi prediktif dari fitur-fitur 
 yang berkorelasi dengannya, sehingga penurunan kinerja model menjadi 
 kurang terlihat dan interpretasi menjadi 
-bias \autocite{molnar2022interpretable}.
+bias \autocite{molnar2025}.
 
 \subsection{Penerapan XAI dalam Prediksi Ekonomi}
 Penerapan XAI dalam sektor ekonomi ini bertujuan untuk menjadi penghubung antara kinerja prediktif dan akuntabilitas regulasi. Bussmann dkk. menunjukkan bahwa penggunaan SHAP dalam manajemen risiko kredit memungkinkan institusi keuangan untuk tidak hanya memprediksi gagal bayar (\textit{default}), tetapi juga mengidentifikasi faktor pendorong spesifik (misalnya rasio likuiditas rendah) bagi setiap nasabah \autocite{bussmann2021explainable}. Dalam konteks bank sentral, teknik XAI memungkinkan pembuat kebijakan membedah model DL untuk memastikan bahwa prediksi suku bunga didasarkan pada sinyal ekonomi yang valid seperti \textit{output gap}, bukan korelasi yang salah dalam data \autocite{chakraborty2017machine}.
@@ -629,4 +637,4 @@ Bussmann dkk. memublikasikan penelitian di jurnal \textit{Computational Economic
 Penelitian ini jadi inisiator dalam ranah integrasi \textit{Large Language Models} untuk data keuangan. Yu dkk. mengusulkan kerangka kerja multimodal, yaitu model prediksi numerik (LSTM) digabungkan dengan LLM yang memproses data teks berita keuangan untuk memprediksi pergerakan harga saham NASDAQ-100. Metode yang digunakan melibatkan teknik \textit{prompt engineering} untuk memandu LLM melakukan penalaran terhadap sinyal pasar. Hasil studi menunjukkan bahwa integrasi ini tidak hanya meningkatkan akurasi prediksi dibandingkan model \textit{baseline}, tetapi juga menghasilkan penjelasan tekstual yang logis mengenai penyebab pergerakan pasar. \textit{Paper} ini membuktikan bahwa LLM dapat berperan efektif sebagai mesin interpretasi naratif untuk data \textit{deret waktu}.
 
 \subsection{Explainable-AI powered stock price prediction using time series transformers: A Case Study on BIST100 \autocite{calik2025explainable}}
-Penelitian terbaru oleh Calik dkk. yang dipublikasikan di \textit{arXiv} ini secara spesifik meneliti integrasi metode XAI dengan model \textit{Transformer-based} untuk prediksi harga saham sektor perbankan. Studi ini menggunakan model \textit{Time Series Transformer} yang diperkaya dengan indikator teknikal, kemudian menerapkan SHAP dan LIME untuk memberikan transparansi pada \textit{output} model. Hasil penelitian menunjukkan bahwa model berbasis \textit{Transformer} mengungguli model tradisional, dan penggunaan kombinasi SHAP serta LIME terbukti efektif dalam memberikan wawasan interpretatif kepada investor mengenai fitur mana (misalnya volume transaksi atau tren global) yang paling memengaruhi harga.
+Penelitian terbaru oleh Calik dkk. yang dipublikasikan di \textit{arXiv} ini secara spesifik meneliti integrasi metode XAI dengan model \textit{Transformer-based} untuk prediksi harga saham sektor perbankan. Studi ini menggunakan model \textit{Time Series Transformer} yang diperkaya dengan indikator teknikal, kemudian menerapkan SHAP dan LIME untuk memberikan transparansi pada \textit{output} model. Hasil penelitian menunjukkan bahwa model berbasis \textit{Transformer} mengungguli model tradisional, dan penggunaan kombinasi SHAP serta LIME terbukti efektif dalam memberikan wawasan interpretatif kepada investor mengenai fitur yang paling memengaruhi harganya.
