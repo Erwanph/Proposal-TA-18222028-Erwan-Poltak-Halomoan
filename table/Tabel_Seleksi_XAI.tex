@@ -1,0 +1,14 @@
+\begin{table}[H]
+\centering
+\caption{Matriks Seleksi Metode XAI}
+\label{tbl:seleksi-xai}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{8cm}|}
+\hline
+\textbf{Metode XAI} & \textbf{Pendekatan} & \textbf{Analisis} \\ \hline
+SHAP (\textit{Shapley Additive Explanations}) & \textit{Game Theory} & Satu-satunya metode yang menjamin konsistensi matematis melalui tiga sifat desirable: \textit{local accuracy}, \textit{missingness}, dan \textit{consistency}. Sangat efektif menangani multikolinieritas fitur dengan memberikan kontribusi yang adil untuk setiap kombinasi subset fitur, aspek krusial untuk data makroekonomi dengan korelasi antar-variabel tinggi. \\ \hline
+LIME (\textit{Local Interpretable Model-agnostic Explanations}) & \textit{Local Surrogate} & Menggunakan metode linear lokal untuk menjelaskan prediksi spesifik per-instans. Lebih ringan secara komputasi dan efektif untuk analisis mendalam pada periode waktu tertentu, serta dapat melengkapi penjelasan global dari SHAP. \\ \hline
+PFI (\textit{Permutation Feature Importance}) & \textit{Error-based} & Bekerja dengan asumsi fitur-fitur independen dan mengukur pentingnya fitur berdasarkan peningkatan kesalahan prediksi. Kurang sesuai untuk data makroekonomi karena permutasi menghasilkan data instances yang tidak realistis pada konteks multikolinieritas, meningkatkan bias interpretasi. \\ \hline
+\end{tabular}
+\end{table}

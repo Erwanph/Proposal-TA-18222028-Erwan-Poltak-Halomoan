@@ -1,0 +1,59 @@
+% ==========================================
+% TABEL DESKRIPSI DATASET BULANAN
+% ==========================================
+\begin{longtable}{|p{0.7cm}|p{2.8cm}|p{1.2cm}|p{7.3cm}|}
+\caption{Deskripsi Kolom Dataset}
+\label{tbl:deskripsi-dataset-bulanan} \\
+\hline
+\textbf{No} & \textbf{Nama Kolom} & \textbf{Tipe} & \textbf{Deskripsi} \\
+\hline
+\endfirsthead
+
+\multicolumn{4}{c}%
+{{\tablename\ \thetable{} -- lanjutan dari halaman sebelumnya}} \\
+\hline
+\textbf{No} & \textbf{Nama Kolom} & \textbf{Tipe} & \textbf{Deskripsi} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{4}{r}{\small\textit{Berlanjut ke halaman berikutnya...}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+1 & ID & Object & Identitas unik untuk setiap observasi \\
+\hline
+2 & Bulan & Integer & Periode bulan observasi (1--12) \\
+\hline
+3 & Tahun & Integer & Periode tahun observasi \\
+\hline
+4 & \seqsplit{Inflation\_YoY\_Pct} & Float & Tingkat inflasi tahunan (year-on-year) dalam persen (\%) \\
+\hline
+5 & \seqsplit{Inflation\_Gap} & Float & Selisih antara target inflasi Bank Indonesia dengan nilai inflasi aktual dalam persen (\%) \\
+\hline
+6 & \seqsplit{GDP\_Growth\_YoY\_Pct} & Float & Pertumbuhan Produk Domestik Bruto tahunan (year-on-year) dalam persen (\%), mencerminkan output gap \\
+\hline
+7 & \seqsplit{USD\_IDR\_Monthly\_Avg} & Float & Nilai tukar rata-rata bulanan Rupiah terhadap Dolar Amerika Serikat (IDR/USD) \\
+\hline
+8 & \seqsplit{M2\_Triliun\_Rp} & Float & Jumlah uang beredar (agregat M2) dalam triliun Rupiah \\
+\hline
+9 & \seqsplit{Credit\_Growth\_Triliun\_Rp} & Float & Total volume kredit perbankan yang beredar dalam triliun Rupiah \\
+\hline
+10 & \seqsplit{IHSG\_End\_of\_Month} & Float & Indeks Harga Saham Gabungan (IHSG) pada penutupan perdagangan akhir bulan \\
+\hline
+11 & \seqsplit{Foreign\_Reserves\_Miliar\_USD} & Float & Cadangan devisa negara dalam miliar Dolar Amerika Serikat (USD) \\
+\hline
+12 & \seqsplit{Federal\_Funds\_Rate\_Pct} & Float & Suku bunga acuan Federal Reserve (Fed) Amerika Serikat dalam persen (\%) \\
+\hline
+13 & \seqsplit{Oil\_Price\_Brent\_USD\_per\_Bbl} & Float & Harga minyak mentah \textit{Brent} dalam Dolar Amerika Serikat per barel (USD/bbl) \\
+\hline
+14 & \seqsplit{Gold\_Price\_USD\_per\_Oz} & Float & Harga emas dunia dalam Dolar Amerika Serikat per troy ounce (USD/oz) \\
+\hline
+15 & \seqsplit{VIX\_Volatility\_Index} & Float & Indeks volatilitas pasar saham AS yang mengukur sentimen risiko global \\
+\hline
+16 & \seqsplit{BI\_Rate\_Pct} & Float & Suku bunga acuan Bank Indonesia (target rate kebijakan moneter) dalam persen (\%) \\
+\hline
+
+\end{longtable}

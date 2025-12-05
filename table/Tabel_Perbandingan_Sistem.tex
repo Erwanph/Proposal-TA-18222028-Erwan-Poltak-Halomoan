@@ -1,0 +1,16 @@
+\begin{table}[h]
+\centering
+\caption{Perbandingan Sistem Saat Ini dan Ajuan Sistem Solusi}
+\label{tbl:perbandingan-alternatif}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Aspek} & \textbf{Sistem Saat Ini} & \textbf{Ajuan Sistem Solusi} \\ \hline
+Cakupan Data & Inflasi, jumlah uang beredar, dan nilai tukar rupiah. & Melibatkan indikator makroekonomi domestik dan global. \\ \hline
+Pra-pemrosesan Data & Hanya berfokus pada normalisasi data sebelum pelatihan. & Lebih terstruktur, meliputi \textit{data alignment}, \textit{merging}, \textit{cleaning}, \textit{imputation}, \textit{feature engineering}, hingga normalisasi dan \textit{splitting}. \\ \hline
+Pendekatan Model & \textit{Single model approach}. & \textit{Multi-model comparison} dengan membandingkan ekonometrika tradisional, ML, dan DL untuk memilih performa terbaik. \\ \hline
+Interpretabilitas (XAI) & \textit{Black-box}: hanya menghasilkan angka prediksi tanpa penjelasan konteks. & \textit{Explainable}: menggunakan SHAP dan LIME untuk interpretasi fitur, serta LLM untuk menyusun narasi penjelasan yang mudah dipahami. \\ \hline
+Evaluasi & Evaluasi tunggal berbasis metrik \textit{error} kuantitatif. & Evaluasi performa kuantitatif dan asesmen interpretabilitas. \\ \hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,55 @@
+% ==========================================
+% BAB IV DESAIN KONSEP SOLUSI
+% ==========================================
+\chapter{DESAIN KONSEP SOLUSI}
+\label{chap:desain-konsep-solusi}
+
+Pada bab ini dijelaskan desain konseptual solusi yang diusulkan 
+sebagai solusi atas permasalahan yang ada dalam sistem saat ini. 
+Setiap tahapan dalam desain ini dirancang sejalan dengan metodologi CRISP-DM 
+yang digunakan dalam tugas akhir ini.
+
+% --- Desain Solusi ---
+\section{Desain Solusi}
+\label{sec:desain-solusi}
+
+Tugas akhir ini akan dikerjakan sesuai dengan ajuan desain konseptual 
+yang dapat dilihat pada Gambar \ref{fig:desain-solusi}. Diagram 
+ini menggambarkan alur proses pengerjaan tugas akhir dengan lengkap, 
+mulai dari tahap \textit{data collection}, \textit{data understanding}, \textit{data preparation}, \textit{modelling}, 
+hingga tahap penjelasan hasil prediksi menggunakan integrasi XAI dan LLM, 
+serta evaluasi kuantiatif dan interpretabilitas.
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+  \includegraphics[width=1.08\textwidth]{image/perbandingan_sistem.png}
+  \caption{Desain Solusi Pengerjaan Tugas Akhir}
+  \label{fig:desain-solusi}
+\end{figure}
+
+Perbedaan mendasar antara sistem yang ada saat ini 
+dengan desain solusi yang diajukan dapat dilihat secara rinci pada 
+Tabel \ref{tbl:perbandingan-alternatif}.
+
+\input table/Tabel_Perbandingan_Sistem.tex
+
+Sistem yang diajukan dalam tugas akhir ini menjadi solusi atas 
+kelemahan yang ada pada sistem prediksi saat ini. Sistem yang diajukan
+memiliki aspek transparansi yang lebih baik melalui integrasi metode
+XAI dan LLM untuk menjelaskan hasil prediksi, serta cakupan data
+yang lebih luas pada indikator makroekonomi lokal dan ditambahkan dengan
+indikator global.
+
+Perbedaan utama terletak pada proses pasca pemodelan (\textit{post-modelling}). 
+Sistem ajuan tidak berhenti hanya pada \textit{output} prediksi, tetapi juga 
+mengintegrasikan XAI yang kemudian dinarasikan oleh LLM untuk memudahkan pemahaman terhadap faktor yang 
+memengaruhi hasil prediksi bagi orang awam. Mekanisme ini memungkinkan 
+sistem untuk tidak hanya memberikan hasil prediksi suku bunga ke depan, 
+tetapi juga menjelaskan alasan dibalik hasil prediksi tersebut berdasarkan 
+dinamika variabel ekonomi yang memengaruhinya. Selain itu, proses pra-pemrosesan 
+data pada solusi yang diusulkan dirancang jauh lebih terstruktur 
+dengan tahapan \textit{cleaning}, \textit{imputation}, dan \textit{feature engineering} 
+untuk menangani \textit{raw dataset} yang kompleks. Hal ini bertujuan 
+untuk memastikan kualitas data yang lebih baik sebelum masuk ke tahap 
+pemodelan.

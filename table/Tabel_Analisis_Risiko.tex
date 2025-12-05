@@ -1,0 +1,26 @@
+% ==========================================
+% TABEL ANALISIS RISIKO DAN MITIGASI
+% ==========================================
+\begin{table}[H]
+\centering
+\caption{Analisis Risiko dan Mitigasi}
+\label{tbl:analisis-risiko}
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{4cm}|p{5cm}|}
+\hline
+\textbf{No} & \textbf{Risiko} & \textbf{Dampak} & \textbf{Mitigasi} \\
+\hline
+1 & Data target prediksi terbatas  & Akurasi model rendah dan \textit{overfitting} pada model \textit{deep learning}. & 
+\begin{enumerate}[leftmargin=*, nosep, topsep=0pt]
+\item Menggunakan \textit{time-series augmentation} (\textit{sliding window}) untuk meningkatkan sampel pelatihan.
+\item Implementasi \textit{regularization} (\textit{dropout}, L1/L2) pada model Bi-LSTM.
+\item Melakukan \textit{cross-validation} untuk validasi hasil prediksi.
+\end{enumerate} \\
+\hline
+2 & Akurasi model \textit{deep learning} rendah & Validasi model \textit{deep learning} mungkin tidak optimal dibanding \textit{machine learning} atau model ekonometrika tradisional. & 
+\begin{enumerate}[leftmargin=*, nosep, topsep=0pt]
+\item Melakukan \textit{tuning hyperparameter} untuk mencari kombinasi parameter optimal yang menghasilkan kinerja model terbaik.
+\item Melakukan proses \textit{feature engineering} yang lebih luas lagi.
+\end{enumerate} \\
+\hline
+\end{tabular}
+\end{table}

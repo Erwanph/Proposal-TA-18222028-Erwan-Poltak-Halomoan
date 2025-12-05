@@ -1,0 +1,250 @@
+% ==========================================
+% BAB III ANALISIS MASALAH
+% ==========================================
+\chapter{ANALISIS MASALAH}
+\label{chap:analisis-masalah}
+
+Pada bab ini dibahas terkait permasalahan penetapan suku bunga acuan 
+Bank Indonesia, analisis kondisi sistem saat ini, identifikasi 
+kebutuhan pengguna, serta analisis pemilihan solusi yang tepat untuk 
+mengatasi permasalahan tersebut. Analisis kondisi ini dilakukan dengan 
+mengacu pada tahap awal CRISP-DM yang telah dibahas pada Bab I, 
+yaitu \textit{business understanding} dan \textit{data understanding}.
+
+% --- Analisis Kondisi Saat Ini ---
+\section{Analisis Kondisi Saat Ini}
+\label{sec:kondisi-saat-ini}
+
+Pada subbab ini dibahas terkait model konseptual sistem penetapan suku 
+bunga acuan Bank Indonesia saat ini, serta masalah yang ada pada sistem 
+tersebut. Analisis kondisi ini dilakukan dengan mengacu pada tahap awal 
+CRISP-DM yang telah dibahas pada Bab I, yaitu \textit{business understanding}. 
+Tahap ini memberikan pemahaman terkait konteks masalah yang akan 
+diselesaikan dalam tugas akhir ini.
+
+\subsection{Business Understanding}
+Penetapan BI-Rate merupakan salah satu bentuk kebijakan moneter utama 
+Bank Indonesia untuk mencapai target inflasi dan menjaga stabilitas 
+nilai tukar. Berdasarkan analisis kondisi saat ini, kebutuhan bisnis 
+yang mendesak adalah transparansi dan edukasi publik.
+
+Meskipun data ekonomi tersedia secara luas, proses pengambilan 
+keputusan di balik penetapan BI-Rate sering kali dipersepsikan 
+sebagai \textit{black box}. Publik mengetahui data masukan 
+(inflasi, PDB, kurs) dan hasil keluaran (BI-Rate), tetapi tidak 
+memahami mekanisme internal atau bobot kontribusi setiap variabel 
+terhadap keputusan tersebut.
+
+Oleh karena itu, diperlukan sebuah sistem yang mampu menjembatani 
+kesenjangan antara data kuantitatif yang kompleks dengan pemahaman 
+masyarakat. Sistem ini harus mampu memprediksi arah kebijakan BI-Rate 
+dengan akurasi yang optimal sekaligus membuka \textit{black box} 
+tersebut melalui penjelasan yang transparan. Tujuan akhirnya adalah 
+meningkatkan akuntabilitas kebijakan, mengurangi asimetri informasi, 
+dan membantu membentuk ekspektasi pasar yang lebih rasional melalui 
+narasi berbasis data yang mudah dipahami.
+
+\subsection{Gambaran Sistem Saat Ini}
+Proses penetapan BI-Rate yang berjalan saat ini melibatkan analisis 
+mendalam dan prosedur bertingkat di internal Bank Indonesia.
+
+\begin{figure}[h]
+  \centering
+  \captionsetup{justification=centering}
+  \includegraphics[width=0.9\textwidth]{image/proses_penetapan_birate.png}
+  \caption{Proses Penetapan BI-Rate Saat Ini}
+  \label{fig:proses-penetapan-birate}
+\end{figure}
+
+Sebagaimana diilustrasikan pada Gambar \ref{fig:proses-penetapan-birate}, 
+proses dimulai dari pengumpulan data ekonomi makro domestik dan global. 
+Departemen terkait, khususnya Departemen Kebijakan Ekonomi dan Moneter (DKEM), 
+melakukan analisis dan simulasi model ekonometrika untuk menyusun 
+rekomendasi kebijakan. Hasil analisis ini dibahas dalam Rapat Dewan 
+Gubernur (RDG) yang berlangsung selama dua hari: hari pertama untuk 
+evaluasi kondisi ekonomi dan hari kedua untuk penetapan 
+kebijakan \autocite{bi2023moneter}.
+
+Setelah keputusan ditetapkan, Bank Indonesia mengumumkan hasil RDG 
+melalui siaran pers resmi. Namun, terdapat keterbatasan dalam sistem 
+komunikasi saat ini:
+\begin{enumerate}
+    \item \textbf{Penjelasan Kualitatif} 
+    
+    Narasi dalam siaran pers umumnya bersifat makro dan kualitatif. Tidak ada rincian kuantitatif eksplisit yang menyatakan seberapa besar bobot kontribusi spesifik dari setiap indikator (misalnya berapa persen kenaikan inflasi memengaruhi keputusan kenaikan suku bunga bulan ini).
+    
+    \item \textbf{Kesenjangan Informasi} 
+    
+    Pengguna awam dapat kesulitan memvalidasi rasionalitas keputusan penetapan BI-Rate secara mandiri karena ketiadaan alat bantu analisis yang transparan.
+\end{enumerate}
+
+Selain sistem internal BI, terdapat juga berbagai model prediksi yang 
+dikembangkan oleh penelitian terdahulu, seperti yang ditunjukkan pada 
+Gambar \ref{fig:sistem-prediksi-terdahulu}.
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+  \includegraphics[width=1\textwidth]{image/sistem_prediksi_literatur.png}
+  \caption{Gambaran Sistem Prediksi BI-Rate Terdahulu \autocite{putri2019prediksi}}
+  \label{fig:sistem-prediksi-terdahulu}
+\end{figure}
+
+Sistem prediksi terdahulu hanya fokus pada akurasi prediksi. Alurnya 
+bersifat linear, mulai dari \textit{input} data, normalisasi, pemodelan, 
+hingga \textit{output} hasil prediksi. Sistem ini belum memiliki fitur 
+interpretabilitas (\textit{explainability}). Pengguna hanya menerima 
+angka hasil prediksi tanpa mengetahui kenapa angka tersebut muncul, 
+sehingga sistem ini kurang efektif untuk tujuan edukasi dan analisis 
+kebijakan.
+
+% --- Analisis Kebutuhan ---
+\section{Analisis Kebutuhan}
+\label{sec:analisis-kebutuhan}
+
+Pada subbab ini dibahas kebutuhan spesifik yang harus dipenuhi oleh 
+sistem untuk menjawab permasalahan pengguna yang telah diidentifikasi. 
+Analisis ini mencakup identifikasi masalah dari sudut pandang pengguna, 
+serta spesifikasi kebutuhan fungsional dan non-fungsional sistem yang 
+akan dikembangkan.
+
+\subsection{Identifikasi Masalah Pengguna}
+Berdasarkan observasi, masalah utama yang dihadapi pengguna adalah:
+\begin{enumerate}
+\item Pengguna awam sulit memahami hubungan sebab-akibat yang kompleks antara fluktuasi indikator ekonomi dengan perubahan BI-Rate tanpa bantuan alat analisis kuantitatif.
+\item Pengguna tidak memiliki akses ke alat bantu yang dapat memberikan analisis naratif mengenai kondisi ekonomi terkini, sehingga sering kali bergantung pada opini pengamat yang subjektif atau tertunda (\textit{lagging}).
+\end{enumerate}
+
+\subsection{Kebutuhan Fungsional}
+Kebutuhan fungsional mendefinisikan fitur dan kemampuan spesifik yang 
+harus dimiliki oleh sistem yang akan dikembangkan. Rincian kebutuhan 
+fungsional dapat dilihat di Tabel \ref{tbl:kebutuhan-fungsional}.
+
+\input table/Tabel_Kebutuhan_Fungsional.tex
+
+\subsection{Kebutuhan Non-Fungsional}
+Kebutuhan non-fungsional mendefinisikan batasan kualitas sistem. 
+Rincian kebutuhan non-fungsional dapat dilihat di Tabel \ref{tbl:kebutuhan-nonfungsional}.
+
+\input table/Tabel_Kebutuhan_NonFungsional.tex
+
+% --- Analisis Pemilihan Solusi ---
+\section{Analisis Pemilihan Solusi}
+\label{sec:analisis-pemilihan-solusi}
+
+Pada subbab ini dilakukan analisis terhadap alternatif pendekatan 
+solusi untuk memenuhi kebutuhan sistem, serta pemilihan solusi terbaik.
+Analisis ini menggunakan pendekatan \textit{comparative selection}, 
+yaitu berbagai kandidat metode dievaluasi berdasarkan karakteristik 
+data, serta kebutuhan pengguna akan transparansi.
+
+Berikut adalah analisis pemilihan metode untuk tiga komponen utama 
+sistem, yaitu model prediksi, XAI, dan LLM.
+
+\subsection{Seleksi Model Prediksi}
+Tantangan utama dalam data deret waktu ekonomi adalah menangkap 
+pola linier. Bagian ini akan menganalisis kandidat model dari 
+ekonometrika tradisional, \textit{machine learning}, dan \textit{deep learning}. 
+
+\input table/Tabel_Seleksi_Model.tex
+
+Berdasasarkan analisis pada Tabel \ref{tbl:seleksi-model}, seluruh 
+kategori model memiliki keunggulan masing-masing. Oleh karena itu,
+strategi yang diambil adalah melakukan komparasi performa antara 
+model ekonometrika (ARIMA, VAR), ML (Random Forest, XGBoost), dan 
+DL (LSTM, Bi-LSTM). Pendekatan ini memastikan bahwa eksperimen nanti 
+dapat mengidentifikasi model terbaik yang paling sesuai dengan 
+karakteristik data makroekonomi yang kompleks.
+
+\subsection{Seleksi Metode XAI}
+Komponen ini bertujuan untuk menginterpretasikan model \textit{black box} agar 
+transparan dan dapat diketahui faktor apa saja yang memengaruhi hasil 
+prediksinya. Tantangan terbesar dalam data ekonomi adalah 
+multikolinieritas yang ada antar variabel. Metode XAI yang dipilih 
+harus dapat menangani kondisi ini.
+
+\input table/Tabel_Seleksi_XAI.tex
+
+Berdasarkan analisis pada Tabel \ref{tbl:seleksi-xai}, metode XAI yang 
+digunakan pada tugas akhir ini adalah SHAP dan LIME untuk meminimalisir 
+bias interpretasi pada data yang mengalami multikolinearitas. SHAP 
+memberikan penjelasan yang konsisten dan matematis dengan latar belakang 
+\textit{game theory} dengan tiga sifatnya (\textit{local accuracy}, 
+\textit{missingness}, dan \textit{consistency}). LIME 
+memberikan penjelasan lokal yang mudah dipahami melalui aproksimasi linear 
+lokal. Keduanya lebih \textit{robust} dibanding PFI dalam menangani fitur-fitur 
+yang berkorelasi tinggi karena SHAP memperhitungkan semua kombinasi 
+subset fitur secara eksplisit dan LIME bekerja pada representasi lokal 
+yang dapat disesuaikan dengan struktur data.
+
+\subsection{Seleksi Model LLM}
+Komponen terakhir ini (LLML) akan membuat narasi kebijakan yang mudah dipahami 
+awam berdasarkan hasil prediksi dan XAI. Kriteria utamanya adalah 
+kemampuan penalaran (\textit{reasoning}) model dan minimnya halusinasi.
+
+\input table/Tabel_Seleksi_LLM.tex
+
+Berdasarkan analisis pada Tabel \ref{tbl:seleksi-llm}, model LLM yang 
+digunakan pada tugas akhir ini adalah OpenAI untuk memprioritaskan 
+akurasi penjelasan di atas efisiensi biaya, mengingat kesalahan 
+interpretasi dalam konteks keuangan dapat berdampak fatal terhadap 
+kredibilitas sistem.
+
+\subsection{Penentuan Solusi}
+\label{subsec:penentuan-solusi}
+
+Berdasarkan analisis seleksi komponen yang telah dilakukan pada 
+sub-bab sebelumnya, desain solusi akhir sistem prediksi BI-Rate 
+dalam Tugas Akhir ini ditetapkan menggunakan pendekatan 
+arsitektur \textit{explainable artificial intelligence with generative narrative}.
+
+Keputusan ini diambil dengan pertimbangan utama untuk menyeimbangkan 
+akurasi prediksi dengan kebutuhan interpretasi yang menjadi masalah 
+yang ingin diselesaikan. Secara ringkas, arsitektur solusi terpilih 
+terdiri dari:
+
+\begin{enumerate}
+    \item \textbf{Modul Prediksi} 
+    
+    Tidak mengandalkan satu model tunggal, 
+    melainkan menggunakan strategi komparasi performa antara model 
+    tradisional, ML, dan DL. Pendekatan ini dapat memastikan bahwa 
+    eksperimen nanti dapat mengidentifikasi model terbaik yang 
+    paling sesuai dengan karakteristik data makroekonomi yang kompleks.
+    
+    \item \textbf{Modul Interpretasi} 
+    
+    Mengintegrasikan metode 
+    SHAP sebagai penjelas utama untuk menjamin konsistensi atribusi 
+    fitur secara global, lalu didukung oleh LIME untuk validasi penjelasan 
+    lokal pada kasus prediksi yang spesifik. Keduanya dipilih 
+    untuk memitigasi risiko misinterpretasi akibat multikolinearitas 
+    data makroekonomi yang ada.
+    
+    \item \textbf{Modul Narasi} 
+    
+    Menggunakan OpenAI sebagai LLM untuk 
+    mengubah \textit{output} hasil prediksi dan XAI menjadi teks 
+    narasi kebijakan yang mudah dipahami dan menjembatani kesenjangan 
+    teknis antara sistem AI dan pengguna awam.
+\end{enumerate}
+
+Integrasi ketiga komponen ini diharapkan mampu menghasilkan sistem 
+yang optimal dalam memprediksi BI-Rate, serta transparan dan 
+komunikatif, sesuai dengan tujuan utama tugas akhir ini.
+
+% --- Data Understanding ---
+\section{Data Understanding}
+\label{sec:data-understanding}
+
+Pada tahap ini, dilakukan eksplorasi dan analisis awal terhadap data 
+makroekonomi yang akan digunakan untuk membuat model prediksi BI-Rate. 
+Dataset yang digunakan dalam tugas akhir ini terdiri dari 11 variabel 
+dengan frekuensi bulanan, mulai dari Juli 2005 hingga September 
+2025. Total data yang diobservasi adalah sebanyak 243 data point.
+
+\subsection{Data Overview}
+Dataset terdiri atas 15 kolom pada Tabel \ref{tbl:deskripsi-dataset-bulanan}.
+
+\input table/Tabel_Dataset_Bulanan.tex
+

@@ -1,0 +1,30 @@
+\begin{longtable}{|p{2.5cm}|p{2.5cm}|p{7.5cm}|}
+\caption{Matriks Seleksi Model Prediksi} \label{tbl:seleksi-model} \\
+
+\hline
+\textbf{Kategori} & \textbf{Algoritma} & \textbf{Analisis} \\ \hline
+\endfirsthead
+
+\multicolumn{3}{c}%
+{{\tablename\ \thetable{} -- lanjutan}} \\
+\hline
+\textbf{Kategori} & \textbf{Algoritma} & \textbf{Analisis} \\ \hline
+\endhead
+
+\hline
+\multicolumn{3}{r}{\small\textit{Berlanjut ke halaman berikutnya...}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+\multirow{2}{=}{Ekonometrika} & ARIMA & Metode ini adalah standar dasar untuk pemodelan deret waktu univariat. Sangat relevan dijadikan \textit{baseline} untuk mengukur seberapa baik model kompleks dapat menghasilkan prediksi yang lebih baik dibandingkan model linear sederhana. \\ \cline{2-3}
+ & VAR & Metode ini mampu menangkap hubungan linear timbal balik (interdependensi) antar variabel makroekonomi, sehingga bisa jadi pembanding yang penting untuk hasil prediksi. \\ \hline
+
+\multirow{2}{=}{Machine Learning} & Random Forest & Menggunakan pendekatan \textit{bagging} yang efektif mengurangi varians pada model. Sangat stabil dalam menangani data dengan \textit{noise} tinggi dan tahan terhadap \textit{outlier} tanpa asumsi distribusi data yang ketat. \\ \cline{2-3}
+ & XGBoost & Menggunakan pendekatan \textit{gradient boosting} yang secara iteratif memperbaiki kesalahan prediksi model sebelumnya. Memiliki performa tinggi pada data tabular dan mampu menangkap pola non-linear yang kompleks secara efisien. \\ \hline
+
+\multirow{2}{=}{Deep Learning} & LSTM & Arsitektur ini mengatasi masalah \textit{vanishing gradient} pada RNN standar. Sangat krusial untuk menangkap memori jangka panjang, mengingat dampak kebijakan moneter sering kali memiliki efek tunda (\textit{lag effect}). \\ \cline{2-3}
+ & Bi-LSTM & Pengembangan dari LSTM yang memproses urutan data dari dua arah (maju dan mundur). Hal ini memungkinkan model menangkap konteks pola temporal yang lebih baik dibandingkan LSTM standar. \\ \hline
+
+\end{longtable}

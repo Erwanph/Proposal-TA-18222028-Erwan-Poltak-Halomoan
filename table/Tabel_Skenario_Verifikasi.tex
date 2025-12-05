@@ -1,0 +1,17 @@
+% ==========================================
+% TABEL SKENARIO VERIFIKASI KINERJA MODEL
+% ==========================================
+\begin{table}[H]
+\centering
+\caption{Skenario Verifikasi Kinerja Model}
+\label{tbl:skenario-verifikasi}
+\begin{tabular}{|p{1cm}|p{3cm}|p{6cm}|p{2cm}|}
+\hline
+\textbf{No} & \textbf{Skenario} & \textbf{Tujuan Evaluasi} & \textbf{Metrik} \\
+\hline
+S1 & \textit{Baseline Comparison} & Membandingkan performa semua model (VAR, ARIMA, Random Forest, XGBoost, LSTM, Bi-LSTM) pada data uji. & RMSE, MAPE, $R^2$ \\
+\hline
+S2 & \textit{Out-of-Sample Performance} & Menguji generalisasi model pada data yang tidak terlihat selama pelatihan. & RMSE, MAPE, $R^2$ \\
+\hline
+\end{tabular}
+\end{table}

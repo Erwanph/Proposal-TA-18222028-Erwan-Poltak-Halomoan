@@ -1,0 +1,184 @@
+% ==========================================
+% BAB I PENDAHULUAN
+% ==========================================
+\chapter{PENDAHULUAN}
+\label{chap:pendahuluan}
+
+Bab ini membahas secara umum permasalahan yang menjadi dasar penyusunan tugas akhir. Bab ini bertujuan untuk memberikan gambaran awal dan pemahaman mendasar mengenai topik yang diangkat. Pada subbab latar belakang dijelaskan faktor-faktor yang menimbulkan permasalahan. Selanjutnya, subbab rumusan masalah, tujuan, serta batasan masalah digunakan untuk memperjelas dan membatasi ruang lingkup permasalahan dengan konkrit. Terakhir, subbab metodologi membahas tentang proses perumusan solusi.
+
+% --- Latar Belakang ---
+\section{Latar Belakang}
+
+Suku bunga acuan Bank Indonesia, yang saat ini dikenal dengan nama 
+BI-Rate, merupakan instrumen kebijakan moneter yang digunakan sebagai 
+sinyal kebijakan untuk mengendalikan ekspektasi inflasi dan menjaga 
+stabilitas nilai rupiah. Dalam perkembangannya, Bank Indonesia 
+melakukan penguatan kerangka operasi moneter pada 19 Agustus 2016 
+dengan mengimplementasikan BI-7 Day Reverse Repo Rate (BI7DRR). 
+Instrumen ini dipilih karena bersifat transaksional di pasar uang, 
+sehingga memiliki hubungan yang lebih kuat dalam memengaruhi perbankan 
+dan sektor riil. Selanjutnya, mulai 21 Desember 2023, Bank Indonesia 
+kembali menggunakan nama BI-Rate menggantikan BI7DRR. Perubahan nama 
+ini bertujuan untuk memperkuat komunikasi kebijakan moneter, tanpa 
+mengubah makna, tujuan, maupun operasionalisasinya yang tetap mengacu 
+pada transaksi \textit{reverse repo} Bank Indonesia tenor 7 hari \autocite{bi2023moneter}.
+
+Penetapan BI-Rate dilakukan melalui Rapat Dewan Gubernur (RDG) Bank 
+Indonesia dengan mempertimbangkan berbagai indikator makroekonomi 
+yang kompleks, baik indikator domestik maupun global. Secara teoritis, 
+keputusan ini sering berlandaskan pada konsep \textit{Taylor Rule}, 
+yang menyarankan bank sentral harus menyesuaikan suku bunga nominal 
+sebagai respon deviasi inflasi aktual dari targetnya dan kesenjangan 
+\textit{output} ekonomi \autocite{taylor1993discretion}. Namun, 
+seiring berkembangnya dinamika ekonomi global, variabel yang 
+memengaruhi keputusan kebijakan moneter semakin bertambah dan rumit, 
+jauh melampaui Taylor Rule awal yang cukup sederhana. Mekanisme 
+transmisi kebijakan moneter sangatlah kompleks, sehingga melandaskan 
+keputusan hanya pada fungsi sederhana dari inflasi dan \textit{output gap} 
+menjadi tidak relevan dalam praktik bank sentral modern \autocite{svensson2003what}.
+
+Secara historis, pemodelan ekonomi di lingkungan bank sentral sangat 
+bergantung pada pendekatan ekonometrika tradisional untuk 
+memproyeksikan variabel makroekonomi. Model statistik konvensional 
+seperti \textit{autoregressive} (AR) dan \textit{vector autoregressive} (VAR) 
+telah lama menjadi standar dalam analisis deret waktu untuk menangkap 
+hubungan antar variabel \autocite{chakraborty2017machine}. Namun, 
+metode konvensional ini memiliki keterbatasan fundamental karena 
+umumnya berasumsi pada hubungan linear, sehingga sering kali kesulitan 
+menangkap pola non-linier yang kompleks yang melekat pada data 
+keuangan modern \autocite{sezer2020financial}. Ketidakmampuan model 
+tradisional dalam menangkap dependensi non-linier ini dapat menyebabkan 
+stagnasi atau penurunan akurasi prediksi, terutama ketika dihadapkan 
+pada dataset dengan volatilitas tinggi.
+
+Keterbatasan model tradisional ini mendorong pergeseran ke arah metode 
+yang lebih modern. Pendekatan \textit{machine learning} (ML) dan \textit{deep learning} (DL) 
+terbukti lebih andal dalam menangkap pola non-linier \autocite{chen2016xgboost}. 
+Algoritma ML mampu menangkap struktur data keuangan yang kompleks 
+dengan lebih baik. Model \textit{deep learning} seperti \textit{Long Short-Term Memory} (LSTM) 
+mampu mengurangi tingkat kesalahan prediksi secara signifikan 
+dibandingkan model ARIMA \autocite{sezer2020financial}. Kemampuan 
+LSTM untuk mempelajari ketergantungan temporal jangka panjang 
+menjadikannya relevan untuk menangani data ekonomi yang fluktuatif \autocite{hochreiter1997long}.
+
+Walau model ML dan DL menunjukkan akurasi prediksi yang tinggi, 
+tantangan utama yang dihadapi adalah interpretabilitas. Model ML 
+dan DL beroperasi sebagai \textit{black box} yang menyulitkan 
+pemahaman terhadap faktor-faktor yang mendasari hasil prediksi \autocite{rudin2019stop}. 
+Dalam konteks kebijakan ekonomi, akurasi semata tidak cukup, pembuat 
+kebijakan membutuhkan pemahaman kausal mengenai faktor yang 
+memengaruhi prediksi demi akuntabilitas publik \autocite{bussmann2021explainable}. 
+Bank of England menyatakan bahwa penggunaan ML di bank sentral wajib 
+disertai transparansi agar keputusan yang diambil memiliki legitimasi \autocite{chakraborty2017machine}. 
+Sesuai pernyataan tersebut, sektor keuangan memerlukan model yang 
+dapat dijelaskan (\textit{explainable}) untuk memenuhi standar 
+regulasi dan manajemen risiko \autocite{bussmann2021explainable}.
+
+Untuk menjawab kebutuhan tersebut, pendekatan \textit{explainable artificial intelligence} (XAI) 
+seperti \textit{SHapley Additive exPlanations} (SHAP) berkembang pesat 
+sebagai solusi untuk melihat kontribusi variabel dalam model kompleks \autocite{adadi2018peeking}. 
+Penerapan ML di bank sentral global telah meluas, mulai dari analisis 
+makroekonomi hingga stabilitas finansial \autocite{chakraborty2017machine}. 
+Studi terbaru menunjukkan model berbasis \textit{Gradient Boosting} 
+yang diinterpretasikan dengan SHAP dapat menangkap faktor risiko 
+finansial secara akurat dan tetap transparan \autocite{moscatelli2020corporate}.
+
+Namun, di Indonesia, penelitian prediksi BI-Rate yang mengintegrasikan 
+ML/DL dengan XAI masih sangat terbatas. Di sisi lain, meskipun solusi 
+XAI tersedia, hasil outputnya masih berupa grafik teknis atau matriks 
+angka. Oleh karena itu, penelitian ini hadir untuk mengisi gap 
+tersebut dengan mengintegrasikan \textit{Large Language Models} (LLM) 
+sebagai bantuan kognitif. Sebagaimana disarankan dalam riset prediksi 
+finansial terkini, LLM tidak hanya berfungsi sebagai penerjemah teks, 
+tetapi mampu menarasikan logika kausalitas dari interpretasi teknis XAI 
+menjadi wawasan kebijakan yang intuitif dan komunikatif, sehingga 
+hasil prediksi dapat langsung dipahami oleh pemangku kepentingan 
+non-teknis dalam perumusan kebijakan moneter \autocite{yu2023temporal}.
+
+% --- Rumusan Masalah ---
+\section{Rumusan Masalah}
+
+Berdasarkan latar belakang yang telah dibahas, terdapat kebutuhan akan 
+model prediksi BI-Rate yang akurat sekaligus transparan, untuk 
+mendukung terciptanya kebijakan ekonomi yang tepat. Hal tersebut 
+melahirkan beberapa permasalahan sebagai berikut:
+
+\begin{enumerate}
+\item Bagaimana membangun model prediksi BI-Rate yang mampu menangkap hubungan linear maupun non-linier antar indikator makroekonomi menggunakan pendekatan ML dan DL?
+\item Bagaimana perbandingan performa akurasi antara model ekonometrika tradisional, ML, dan DL dalam memprediksi BI-Rate?
+\item Bagaimana penerapan teknik XAI untuk memperlihatkan kontribusi indikator makroekonomi terhadap hasil prediksi model secara transparan?
+\item Bagaimana memanfaatkan LLM untuk menerjemahkan hasil interpretasi teknis dari XAI menjadi penjelasan naratif yang dapat dipahami dalam konteks kebijakan ekonomi?
+\end{enumerate}
+
+% --- Tujuan ---
+\section{Tujuan}
+
+Berdasarkan rumusan masalah yang sudah dijelaskan, didapatkan tujuan 
+dari tugas akhir sebagai berikut. Tujuan yang dibuat menjawab 
+pertanyaan yang muncul dalam rumusan masalah.
+
+\begin{enumerate}
+\item Mengembangkan model prediksi BI-Rate berbasis ML dan DL dengan memanfaatkan data indikator makroekonomi domestik dan global.
+\item Melakukan evaluasi komparatif terhadap kinerja model yang dikembangkan dibandingkan dengan model tradisional berdasarkan metrik \textit{error} prediksi.
+\item Mengimplementasikan teknik XAI untuk memberikan interpretasi global dan lokal dari hasil prediksi yang dihasilkan oleh model prediktif.
+\item Menghasilkan mekanisme pelaporan otomatis berbasis LLM yang mampu menarasikan alasan di balik prediksi BI-Rate berdasarkan analisis fitur XAI.
+\end{enumerate}
+
+% --- Batasan Masalah ---
+\section{Batasan Masalah}
+
+Dalam pengerjaan tugas akhir ini dibutuhkan batasan masalah agar lingkup dari tugas akhir yang dikerjakan tidak terlalu luas. Berdasarkan tujuan yang sudah dijelaskan, dapat dibuat batasan masalah sebagai berikut.
+
+\begin{enumerate}
+\item Dataset yang digunakan bersumber dari data resmi Bank Indonesia, Badan Pusat Statistik (BPS), Bank for International Settlements (BIS) Data Portal, Federal Reserve Economic Data (FRED), dan sumber kredibel lainnya. Data mencakup periode waktu bulanan dari Juli 2005 hingga September 2024.
+\item Penggunaan LLM dalam penelitian ini difokuskan hanya sebagai pembuat narasi untuk menjelaskan hasil interpretasi XAI. LLM tidak digunakan untuk melakukan kalkulasi prediksi angka suku bunga secara langsung.
+\end{enumerate}
+
+% --- Metodologi Pengerjaan TA ---
+\section{Metodologi}
+
+Dalam pengerjaan tugas akhir ini, dibutuhkan alur pengerjaan yang 
+terstruktur supaya tujuan yang telah dirumuskan dapat tercapai. Metodologi 
+tugas akhir yang digunakan adalah CRISP-DM (\textit{Cross-Industry Standard Process for Data Mining}) 
+yang merupakan kerangka kerja standar yang bersifat independen 
+terhadap industri dan telah menjadi acuan utama dalam proyek \textit{data mining} \autocite{schroer2021systematic}. 
+Pemilihan CRISP-DM didasarkan pada kemampuannya dalam mengelola siklus 
+proyek berbasis data dan telah terbukti banyak digunakan di berbagai 
+sektor \autocite{martinezplumed2021crisp}. Penulis tidak melakukan 
+tahap \textit{deployment} pada tugas akhir ini karena fokusnya adalah 
+pada pengembangan dan evaluasi model prediksi, bukan penerapan sistem 
+secara operasional.
+
+\begin{figure}[h]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=0.6\textwidth]{image/crispdm.png}
+  \caption{Metodologi CRISP-DM \autocite{martinezplumed2021crisp}}
+  \label{gambar:crispd}
+\end{figure}
+
+Tahapan dalam CRISP-DM dijelaskan sebagai berikut:
+
+\begin{enumerate}
+
+\item \textit{Business Understanding}
+
+Pada tahap ini dilakukan identifikasi kebutuhan dan tujuan tugas akhir dalam konteks kebijakan moneter Indonesia. Tahap ini juga meliputi eksplorasi literatur untuk membantu perumusan masalah, objektif, dan parameter keberhasilan tugas akhir ini.
+
+\item \textit{Data Understanding}
+
+Pada tahap \textit{data understanding} dilakukan pengumpulan dan eksplorasi awal data makroekonomi dari sumber terpercaya, serta melakukan analisis struktur data, kelengkapan, pola dasar, identifikasi potensi masalah data, dan mencari \textit{insights} yang mungkin belum didapatkan sebelumnya.
+
+\item \textit{Data Preparation}
+
+Pada tahap \textit{data preparation}, data dipersiapkan agar layak digunakan untuk proses pemodelan. Tahap ini meliputi pemrosesan data, transformasi format, dan konstruksi fitur yang diperlukan untuk meningkatkan kualitas \textit{input} model. \textit{Dataset} akhir merupakan data yang sudah layak dan siap untuk \textit{training} dan pengujian model.
+
+\item \textit{Modelling}
+
+Pada tahap \textit{modelling}, dilakukan pengembangan model prediksi, konfigurasi parameter, pelatihan model, dan validasi model prediksi yang sesuai terhadap data terkait.
+
+\item \textit{Evaluation}
+
+Pada tahap \textit{evaluation}, hasil model dan aspek interpretabilitas dievaluasi berdasarkan metrik yang telah ditentukan untuk menilai apakah model yang dikembangkan telah memenuhi tujuan awal tugas akhir dan layak dinyatakan selesai. Jika hasil belum memuaskan, dapat dilakukan iterasi kembali ke tahap sebelumnya untuk perbaikan, baik data maupun model.
+
+\end{enumerate}

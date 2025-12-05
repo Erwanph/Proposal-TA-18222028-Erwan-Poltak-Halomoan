@@ -1,0 +1,632 @@
+% ==========================================
+% BAB II STUDI LITERATUR
+% ==========================================
+\chapter{STUDI LITERATUR}
+\label{chap:studi-literatur}
+
+Pada bab ini dibahas berbagai literatur dan Tugas Akhir terdahulu 
+yang dapat menjadi acuan dalam pengerjaan tugas akhir. Bab ini 
+bertujuan untuk memberikan pemahaman terkait konsep dan metode yang 
+digunakan pada tugas akhir ini. Bab ini dibagi menjadi lima subbab 
+utama, yaitu pembahasan mengenai indikator makroekonomi penentu suku 
+bunga acuan pada subbab \ref{sec:kebijakan-moneter}, model prediksi 
+ekonomi berbasis \textit{machine learning} dan \textit{time series} 
+pada subbab \ref{sec:model-prediksi}, konsep \textit{Explainable AI} (XAI) 
+pada subbab \ref{sec:xai}, pemanfaatan \textit{Large Language Model} (LLM) 
+pada subbab \ref{sec:llm}, serta tinjauan penelitian terkait pada 
+subbab \ref{sec:penelitian-terkait}.
+
+% --- Kebijakan Moneter ---
+\section{Kebijakan Moneter dan Variabel Makroekonomi}
+\label{sec:kebijakan-moneter}
+
+\subsection{Suku Bunga Acuan Bank Indonesia (BI-Rate)}
+BI-Rate adalah suku bunga kebijakan yang mencerminkan \textit{stance} 
+kebijakan moneter Bank Indonesia. Instrumen BI-Rate memiliki hubungan 
+yang kuat dengan suku bunga pasar uang, bersifat transaksional atau 
+diperdagangkan di pasar, dan mendorong pendalaman pasar keuangan, 
+khususnya penggunaan instrumen \textit{repo}. Mulai 21 Desember 2023, 
+Bank Indonesia kembali menggunakan nama BI-Rate sebagai suku bunga 
+kebijakan menggantikan BI 7-Day Reverse Repo Rate (BI7DRR) untuk 
+memperkuat komunikasi kebijakan moneter, tanpa mengubah makna dan 
+tujuannya sebagai \textit{stance} kebijakan moneter Bank Indonesia, 
+dan operasionalisasinya tetap mengacu pada transaksi \textit{reverse repo} 
+Bank Indonesia tenor tujuh hari \autocite{bi2023moneter}.
+
+Pemilihan tenor tujuh hari didasarkan pada pertimbangan bahwa instrumen 
+dengan tenor ini lebih aktif ditransaksikan di pasar uang dibandingkan 
+tenor yang lebih panjang, sehingga lebih cepat memengaruhi kondisi 
+pasar. Mekanisme penetapan BI-Rate dilakukan melalui Rapat Dewan 
+Gubernur (RDG) Bank Indonesia yang diselenggarakan setiap bulan dengan 
+mempertimbangkan asesmen menyeluruh terhadap kondisi makroekonomi. 
+Keputusan perubahan BI-Rate memengaruhi perekonomian riil melalui 
+mekanisme transmisi kebijakan moneter yang bekerja melalui lima jalur 
+utama, yaitu jalur suku bunga, jalur kredit, jalur nilai tukar, jalur 
+harga aset, dan jalur ekspektasi \autocite{warjiyo2019central}.
+
+\subsection{Teori Penetapan Suku Bunga (Taylor Rule)}
+Landasan teoritis yang paling banyak digunakan untuk menjelaskan 
+penetapan suku bunga acuan oleh bank sentral adalah Taylor Rule, yang 
+diperkenalkan oleh John B. Taylor pada tahun 1993 \autocite{taylor1993discretion}.
+
+Secara matematis, Taylor Rule diformulasikan sebagai berikut dalam Persamaan \ref{eq:taylor}:
+
+\begin{equation}
+r = p + 0.5y + 0.5(p - 2) + 2
+\label{eq:taylor}
+\end{equation}
+
+Pada Persamaan \ref{eq:taylor}, $r$ adalah tingkat suku bunga \textit{federal funds} (dalam persen), 
+$p$ adalah tingkat inflasi tahunan yang diukur menggunakan deflator PDB selama empat kuartal sebelumnya, 
+sedangkan $y$ menyatakan persentase deviasi PDB riil dari tren atau tingkat \textit{output} 
+potensialnya (\textit{output gap}). Angka 2 yang muncul dalam bagian $(p - 2)$ adalah 
+asumsi target inflasi jangka panjang sebesar 2 persen, sementara konstanta $+ 2$ pada bagian 
+akhir persamaan adalah asumsi Taylor mengenai tingkat suku bunga riil ekuilibrium jangka panjang 
+yang juga sebesar 2 persen. Dengan demikian, koefisien 0{,}5 pada $y$ dan $(p - 2)$ menunjukkan bahwa 
+bank sentral merespon deviasi inflasi dari target dan deviasi output dari potensinya dengan bobot 
+yang seimbang dalam penentuan suku bunga kebijakan.
+Dinamika ekonomi modern menuntut bank sentral untuk mempertimbangkan variabel lain 
+di luar inflasi dan output, seperti stabilitas nilai tukar dan kondisi likuiditas 
+global \autocite{svensson2003what}.
+
+\subsection{Indikator Makroekonomi Penentu Suku Bunga}
+Penetapan suku bunga acuan didasarkan pada analisis komprehensif terhadap 
+berbagai indikator makroekonomi, baik domestik ataupun global.
+
+\subsubsection{Indikator Domestik}
+Beberapa indikator makroekonomi domestik yang dibahas antara lain:
+\begin{enumerate}
+\item \textbf{Inflasi}\\
+Bank Indonesia menerapkan kerangka 
+Inflation Targeting Framework (ITF), yaitu target inflasi menjadi dasar utama 
+kebijakan moneter. Tingkat inflasi yang tinggi umumnya akan mendorong bank sentral 
+untuk menaikkan suku bunga untuk meredam permintaan agregat. Inflasi yang 
+digunakan adalah inflasi \textit{year-on-year} yang mencerminkan perubahan 
+harga dalam satu tahun terakhir \autocite{bi2023moneter}.
+
+\item \textbf{Produk Domestik Bruto (PDB)}\\
+Produk Domestik Bruto (PDB) mencerminkan kondisi aktivitas ekonomi suatu negara. 
+Pertumbuhan PDB yang terlalu cepat dapat memicu tekanan inflasi, sementara 
+pertumbuhan yang terlalu lambat mengindikasikan \textit{slack} dalam perekonomian. 
+\textit{Output gap}, yaitu selisih antara PDB aktual dan PDB potensial, menjadi 
+indikator penting dalam Taylor Rule untuk menentukan \textit{stance} 
+kebijakan moneter yang tepat \autocite{taylor1993discretion}.
+
+\item \textbf{Nilai Tukar (USD/IDR)}\\
+Nilai tukar mata uang, khususnya Rupiah terhadap Dolar Amerika Serikat (USD/IDR), 
+menjadi indikator yang penting dalam ekonomi terbuka seperti Indonesia. 
+Depresiasi nilai tukar dapat meningkatkan inflasi melalui jalur 
+\textit{imported inflation} \autocite{mishkin2019economics}.
+
+\item \textbf{Jumlah Uang Beredar (M2)}\\
+Jumlah peredaran uang dalam perekonomian, yang diukur melalui agregat moneter M2, 
+mempengaruhi tekanan inflasi melalui \textit{demand-pull inflation}. 
+Pertumbuhan M2 yang terlalu cepat dapat mengindikasikan kondisi moneter yang 
+terlalu longgar dan memerlukan penyesuaian suku bunga untuk mengendalikan 
+likuiditas \autocite{mishkin2019economics}.
+
+\item \textbf{Kredit Perbankan}\\
+Kredit perbankan mencerminkan kondisi intermediasi keuangan dan aktivitas 
+ekonomi riil. Pertumbuhan kredit yang tinggi dapat mengindikasikan ekspansi 
+ekonomi yang kuat, namun juga berpotensi menciptakan \textit{bubble} dan 
+risiko stabilitas finansial. Bank Indonesia memantau pertumbuhan kredit 
+sebagai salah satu indikator dalam perumusan kebijakan moneter dan makroprudensial \autocite{warjiyo2019central}.
+
+\item \textbf{Indeks Harga Saham Gabungan (IHSG)}\\
+IHSG mencerminkan sentimen pasar terhadap kondisi ekonomi dan ekspektasi 
+terhadap prospek perekonomian. Pergerakan IHSG dapat mempengaruhi \textit{wealth effect} 
+dan konsumsi masyarakat melalui jalur harga aset dalam mekanisme transmisi 
+kebijakan moneter \autocite{mishkin2019economics}.
+
+\item \textbf{Cadangan Devisa}\\
+Cadangan devisa merupakan indikator ketahanan eksternal dan kapasitas 
+bank sentral dalam menstabilkan nilai tukar. Cadangan devisa yang memadai 
+dapat memberikan kredibilitas pada kebijakan moneter dan meningkatkan 
+kepercayaan investor terhadap stabilitas ekonomi \autocite{obstfeld2010financial}.
+\end{enumerate}
+
+\subsubsection{Indikator Global}
+Beberapa indikator makroekonomi global yang digunakan dalam pengerjaan 
+tugas akhir ini, antara lain:
+\begin{enumerate}
+\item \textbf{Federal Funds Rate (FFR)}\\
+Federal Funds Rate adalah suku bunga acuan yang ditetapkan oleh Federal Reserve 
+(Fed) Amerika Serikat. FFR memiliki pengaruh signifikan terhadap kebijakan 
+moneter negara \textit{emerging markets}, termasuk Indonesia, melalui 
+aliran modal dan ekspektasi pasar global \autocite{rey2015dilemma}. 
+Kenaikan FFR cenderung mendorong \textit{capital outflow} dari 
+\textit{emerging markets} dan memberikan tekanan depresiasi pada mata 
+uang domestik, yang selanjutnya mempengaruhi keputusan suku bunga Bank Indonesia \autocite{obstfeld2019tie}. 
+
+\item \textbf{Harga Minyak}\\
+Harga komoditas internasional, khususnya minyak mentah, memengaruhi 
+inflasi domestik melalui jalur biaya produksi dan ekspektasi inflasi. Kenaikan harga minyak meningkatkan biaya energi dan 
+transportasi, yang kemudian ditransmisikan ke harga barang dan jasa secara 
+luas \autocite{hamilton2009causes}.
+
+\item \textbf{Harga Emas}\\
+Emas sering dianggap sebagai aset \textit{safe haven} dan lindung nilai terhadap 
+inflasi. Ditemukan bahwa kenaikan harga emas sering kali 
+bertepatan dengan ketidakpastian ekonomi global atau ekspektasi inflasi tinggi \autocite{baur2010gold}.
+
+\item \textbf{Volatilitas Pasar Global (VIX)}\\
+VIX atau \textit{fear index} mengukur ekspektasi volatilitas pasar saham 
+AS dan sering digunakan sebagai barometer sentimen risiko global. Peningkatan 
+VIX mengindikasikan \textit{risk-off sentiment} yang mendorong investor untuk 
+melepas aset berisiko di \textit{emerging markets} dan mencari \textit{safe haven} di obligasi 
+pemerintah negara maju \autocite{bekaert2019world}.
+\end{enumerate}
+
+\subsection{Hubungan Antarvariabel Ekonomi}
+Hubungan antara indikator makroekonomi dan suku bunga acuan bersifat dinamis, 
+kompleks, dan tidak selalu mengikuti pola linear sederhana. Pertama, terdapat 
+fenomena efek ambang batas atau \textit{threshold effects}, ketika pengaruh 
+suatu variabel terhadap suku bunga dapat berubah secara drastis tergantung 
+pada level variabel tersebut. Hansen menunjukkan bahwa respons bank sentral 
+terhadap inflasi mungkin lemah saat tingkat inflasi rendah, namun menjadi 
+sangat agresif ketika inflasi melewati batas psikologis tertentu \autocite{hansen2011threshold}. 
+Artinya, model linear biasa mungkin gagal menangkap urgensi respons kebijakan 
+pada kondisi ekstrem.
+
+Kebijakan moneter bekerja dengan jeda waktu (\textit{time lags}) yang signifikan 
+dan bervariasi. Keputusan perubahan suku bunga hari ini tidak langsung 
+memengaruhi inflasi atau pertumbuhan ekonomi saat itu juga, melainkan memerlukan 
+waktu transmisi sekitar 12 hingga 18 bulan untuk berdampak penuh pada tingkat 
+harga \autocite{svensson1997inflation}. Terdapat mekanisme umpan balik (\textit{feedback loops}) 
+yang saling memengaruhi, yaitu keputusan suku bunga akan memengaruhi variabel 
+makroekonomi yang pada gilirannya akan menjadi input bagi keputusan suku bunga periode berikutnya. 
+Selain itu, hubungan antarvariabel ini rentan mengalami perubahan struktural (\textit{structural breaks}) 
+akibat guncangan eksternal besar seperti krisis finansial global atau pandemi, 
+yang dapat mengubah pola korelasi antarvariabel secara permanen \autocite{stock2012disentangling}. 
+Kompleksitas interaksi non-linear, jeda waktu, dan potensi perubahan struktural 
+inilah yang menjadi dasar urgensi penggunaan metode \textit{Machine Learning} dan \textit{Deep Learning} 
+dalam penelitian ini.
+
+% --- Model Prediksi ---
+\section{Model Prediksi Ekonomi Berbasis \textit{Time Series}}
+\label{sec:model-prediksi}
+
+Prediksi data \textit{deret waktu} (\textit{time series forecasting}) bertujuan untuk memodelkan perilaku dinamis suatu variabel berdasarkan urutan nilai historisnya untuk memproyeksikan nilai masa depan \autocite{box1970time}. Dalam konteks ekonomi makro, tantangan utama prediksi ini terletak pada karakteristik data yang sering kali mengandung autokorelasi tinggi, volatilitas yang berubah-ubah (\textit{heteroskedasticity}), dan interaksi non-linear antarvariabel yang kompleks. Secara historis, pendekatan ini didominasi oleh model ekonometrika linear. Namun, seiring dengan ledakan volume data (\textit{Big Data}) dan kebutuhan akurasi yang lebih tinggi, terjadi pergeseran paradigma menuju penggunaan model \textit{Machine Learning} dan \textit{Deep Learning}. Varian menegaskan bahwa teknik \textit{Machine Learning} menawarkan alat baru bagi para ekonom untuk menangkap pola non-linear yang sering kali terlewatkan oleh model regresi standar, menjadikannya komplemen yang penting bagi metode tradisional.
+
+\subsection{Model Tradisional (Ekonometrika)}
+Pada subbab ini dibahas model ekonometrika tradisional yang menjadi landasan awal dalam prediksi ekonomi karena kemampuannya dalam menjelaskan hubungan yang struktural antarvariabel secara transparan, meskipun kinerjanya yang terbatas pada asumsi linearitas yang kuat (ini tolong kasih sitasi).
+
+\subsubsection{Autoregressive Integrated Moving Average (ARIMA)}
+ARIMA adalah model statistik univariat yang banyak digunakan untuk \textit{time series forecasting}. Model ini dikembangkan oleh Box dan Jenkins pada tahun 1970 dan menjadi standar dalam prediksi ekonomi \autocite{box1970time}. ARIMA terdiri dari tiga komponen utama:
+\begin{enumerate}
+\item \textbf{Autoregressive (AR)}\\
+Komponen ini memodelkan ketergantungan nilai saat ini terhadap nilai-nilai masa lalu. Parameter $p$ menunjukkan jumlah \textit{lag} yang digunakan.
+\item \textbf{Integrated (I)}\\
+Komponen ini menangani \textit{non-stationarity} seperti ada tren tertentu, melalui proses \textit{differencing}. Parameter $d$ menunjukkan \textit{order differencing} yang diperlukan untuk mencapai \textit{stationarity}.
+\item \textbf{Moving Average (MA)}\\
+Komponen ini memodelkan ketergantungan terhadap kesalahan prediksi atau \textit{error term} masa lalu. Parameter $q$ menunjukkan jumlah \textit{lag error} yang digunakan untuk mengoreksi prediksi.
+\end{enumerate}
+
+Secara matematis, model ARIMA(p,d,q) dapat dituliskan seperti pada Persamaan \ref{eq:arima}:
+
+\begin{equation}
+\phi(B)(1-B)^d y_t = \theta(B) \epsilon_t
+\label{eq:arima}
+\end{equation}
+
+Dengan $\phi(B)$ adalah polinomial AR, $B$ adalah \textit{backshift operator}, $\theta(B)$ adalah operator polinomial MA, dan $\epsilon_t$ adalah \textit{white noise error} \autocite{box2015time}. Keunggulan utama ARIMA adalah efisiensinya pada data linear jangka pendek, tetapi model ini sering gagal menangkap volatilitas tinggi atau perubahan struktural mendadak (\textit{structural breaks}) yang umum terjadi dalam data ekonomi modern.
+
+\subsubsection{Vector Autoregression (VAR)}
+VAR adalah perluasan multivariat dari model \textit{autoregressive} yang dikembangkan oleh Sims \autocite{sims1980macroeconomics}. VAR memodelkan sistem variabel endogen, yaitu setiap variabel dijelaskan oleh nilai \textit{lag}-nya sendiri dan nilai \textit{lag} variabel lain dalam sistem. Model VAR(p) untuk $k$ variabel dapat dituliskan sebagai:
+
+\begin{equation}
+Y_t = c + A_1 Y_{t-1} + \dots + A_p Y_{t-p} + u_t
+\label{eq:var}
+\end{equation}
+
+Dengan $Y_t$ adalah vektor $(K \times 1)$ variabel endogen, $c$ adalah vektor konstanta, $A_i$ adalah matriks koefisien, dan $u_t$ adalah vektor \textit{white noise} \autocite{lutkepohl2011vector}.
+
+\subsubsection{Vector Error Correction Model (VECM)}
+VECM adalah model VAR yang telah dimodifikasi untuk menangkap hubungan kointegrasi antar variabel \textit{non-stationary}. Model ini dikembangkan dari konsep \textit{cointegration} oleh Engle dan Granger dan merupakan \textit{special case} dari VAR dengan \textit{restrictions} untuk hubungan jangka panjang \autocite{engle1987cointegration}. Model VECM dapat dituliskan sebagai:
+
+\begin{equation}
+\Delta Y_t = \Pi Y_{t-1} + \sum_{i=1}^{p-1} \Gamma_i \Delta Y_{t-i} + \epsilon_t
+\label{eq:vecm}
+\end{equation}
+
+Dengan $\Pi = \alpha \beta'$ merepresentasikan hubungan kointegrasi jangka panjang \autocite{johansen1995likelihood}.
+
+\subsection{Model \textit{Machine Learning}}
+Keterbatasan model ekonometrika tradisional dalam menangkap pola non-linear dapat diatasi oleh algoritma ML. Dalam penelitian ini, model yang digunakan fokus pada pendekatan \textit{Ensemble Learning}. \textit{Ensemble Learning} adalah paradigma ML yang menggabungkan prediksi dari beberapa model dasar (\textit{base learners}) untuk menghasilkan model prediktif yang lebih optimal \autocite{hastie2009elements}. Dua teknik utama dalam \textit{Ensemble Learning} yang digunakan adalah \textit{Bootstrap Aggregating} (Bagging) dan \textit{Boosting}. Bagging bertujuan mengurangi varians dengan melatih model secara paralel pada subset data acak, sedangkan \textit{Boosting} bertujuan mengurangi bias dengan melatih model secara sekuensial untuk memperbaiki kesalahan model sebelumnya.
+
+\subsubsection{Random Forest Regressor}
+\textit{Random Forest}, yang diperkenalkan oleh Breiman, adalah implementasi algoritma Bagging yang menggunakan pohon keputusan (\textit{decision trees}) sebagai model dasar \autocite{breiman2001random}. Algoritma ini bekerja dengan langkah-langkah berikut:
+\begin{enumerate}
+\item \textbf{Bootstrap Sampling}\\
+Model akan mengambil $N$ sampel acak dari data latih dengan pengembalian (\textit{replacement}).
+\item \textbf{Konstruksi Pohon}\\
+Model membangun pohon keputusan untuk setiap sampel. Pada setiap pemecahan simpul (\textit{node split}), algoritma hanya akan mempertimbangkan subset acak dari fitur, bukan seluruhnya. Hal ini akan memaksa pohon-pohon yang terbentuk menjadi tidak berkorelasi.
+\item \textbf{Agregasi}\\
+Prediksi akhir pada model ini diperoleh dengan menghitung nilai rata-rata output dari seluruh pohon individu.
+\end{enumerate}
+Mekanisme ini membuat \textit{Random Forest} sangat tahan terhadap \textit{noise} dan \textit{outlier} dalam data keuangan karena kesalahan acak pada satu pohon akan saling menghilangkan saat dirata-ratakan dengan pohon lain. Hal ini meminimalisir risiko \textit{overfitting} pada model dengan signifikan.
+
+\subsubsection{Extreme Gradient Boosting (XGB)}
+XGB adalah implementasi algoritma \textit{Gradient Boosting} yang sangat efisien dan terukur, dikembangkan oleh Chen dan Guestrin \autocite{chen2016xgboost}. Berbeda dengan \textit{Random Forest} yang paralel, XGB menggunakan prinsip \textit{Boosting}, yaitu pohon dibangun secara sekuensial. Setiap pohon baru dilatih secara spesifik untuk memprediksi dan memperbaiki sisa kesalahan (\textit{residual}) yang dihasilkan oleh gabungan pohon-pohon sebelumnya. Proses kerja XGB secara rinci meliputi:
+\begin{enumerate}
+\item \textbf{Inisialisasi}: Model dimulai dengan prediksi awal konstan.
+\item \textbf{Menghitung Gradien}: Model akan menghitung gradien dari \textit{loss function} untuk menentukan arah perbaikan kesalahan sebelumnya.
+\item \textbf{Fit Pohon Baru}: Model akan membangun pohon keputusan baru untuk memprediksi gradien kesalahan.
+\item \textbf{Pembaruan model}: Model akan menambahkan hasil prediksi pohon baru dengan bobot tertentu (\textit{learning rate}) untuk memperbarui prediksi akhir.
+\item \textbf{Regularisasi}: XGB menerapkan penalti L1 (\textit{lasso}) dan L2 (\textit{ridge}) pada bobot daun pohon untuk mencegah kompleksitas model yang berlebihan, dan berisiko terjadinya \textit{overfitting}.
+\end{enumerate}
+
+Fungsi objektif XGB dapat dituliskan sebagai:
+
+\begin{equation}
+L(\phi) = \sum_i l(\hat{y}_i, y_i) + \sum_k \Omega(f_k)
+\label{eq:xgboost}
+\end{equation}
+
+Dengan $\Omega(f_k) = \gamma T + \frac{1}{2}\lambda ||w||^2$ mencegah \textit{overfitting} dengan membatasi kompleksitas pohon. XGB dipilih dalam penelitian ini karena fitur \textit{sparsity-aware split finding} yang dimilikinya dan mampu menangani \textit{missing values} secara otomatis, kemampuannya untuk menangkap interaksi non-linear yang kompleks antarvariabel ekonomi, regularisasi bawaan yang membuatnya lebih aman untuk jumlah sampel terbatas, dan kecepatan komputasi yang tinggi dibanding algoritma \textit{boosting} lainnya \autocite{chen2016xgboost}.
+
+\subsection{Model \textit{Deep Learning}}
+Model \textit{Deep Learning} berbasis jaringan saraf tiruan (\textit{Neural Networks}) digunakan untuk menangkap struktur dependensi jangka panjang (\textit{long-term dependencies}) yang sering kali luput dari model \textit{Machine Learning} konvensional. Sezer dkk. mencatat bahwa dalam domain keuangan, model berbasis LSTM menjadi arsitektur dominan karena keunggulannya dalam memproses data sekuensial \autocite{sezer2020financial}.
+
+\subsubsection{Long Short-Term Memory (LSTM)}
+LSTM adalah varian khusus dari \textit{Recurrent Neural Networks} (RNN) yang dirancang oleh Hochreiter dan Schmidhuber untuk mengatasi masalah \textit{vanishing gradient}, yaitu kondisi ketika RNN gagal mempelajari pola dari data masa lalu yang jauh karena gradien kesalahan menyusut mendekati nol selama proses pelatihan (\textit{backpropagation}) \autocite{hochreiter1997long}. Solusi LSTM terletak pada struktur sel memori (\textit{memory cell}) yang dilindungi oleh tiga gerbang logika (\textit{gates}) untuk mengatur aliran informasi:
+
+\begin{enumerate}
+\item \textbf{Forget Gate}\\
+Model memutuskan informasi mana dari memori masa lalu yang sudah tidak relevan dan harus dibuang.
+\begin{equation}
+f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
+\label{eq:lstm_forget}
+\end{equation}
+
+\item \textbf{Input Gate}\\
+Model akan menentukan informasi baru apa dari input saat ini yang penting untuk disimpan ke dalam memori.
+\begin{equation}
+i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)
+\label{eq:lstm_input}
+\end{equation}
+
+\item \textbf{Output Gate}\\
+Model akan mengatur informasi apa dari memori internal yang akan diteruskan sebagai output ke langkah waktu berikutnya.
+\begin{equation}
+o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)
+\label{eq:lstm_output}
+\end{equation}
+\end{enumerate}
+
+Mekanisme ini memungkinkan LSTM untuk mempertahankan informasi penting (seperti dampak kebijakan moneter tahun lalu) dalam jangka waktu panjang dan secara selektif melupakan gangguan jangka pendek (\textit{noise}), menjadikannya sangat efektif untuk data ekonomi yang memiliki \textit{lag effect}.
+
+\subsubsection{Bidirectional Long Short-Term Memory (Bi-LSTM)}
+Bi-LSTM merupakan pengembangan arsitektur LSTM yang diperkenalkan oleh Schuster dan Paliwal \autocite{schuster1997bidirectional}. Jika LSTM standar hanya memproses informasi secara maju (\textit{forward}) dari masa lalu ke masa kini ($t-1 \rightarrow t$), Bi-LSTM memproses data dalam dua arah sekaligus menggunakan dua lapisan LSTM terpisah:
+\begin{enumerate}
+\item \textbf{Forward Layer}: Model memproses urutan data dari awal ke akhir untuk menangkap konteks masa lalu.
+\item \textbf{Backward Layer}: Model akan memproses urutan data dari akhir ke awal untuk menangkap konteks masa depan dalam data latih.
+\end{enumerate}
+Output akhir pada setiap langkah waktu ($y_t$) merupakan gabungan dari kedua lapisan tersebut yang biasanya melalui konkatenasi atau penjumlahan:
+
+\begin{equation}
+y_t = W_{\vec{h}} \vec{h}_t + W_{\overleftarrow{h}} \overleftarrow{h}_t + b_y
+\label{eq:bilstm}
+\end{equation}
+
+Output dari kedua lapisan ini kemudian digabungkan untuk menghasilkan representasi fitur yang lebih baik. Dalam konteks prediksi \textit{deret waktu}, pendekatan ini memungkinkan model untuk memahami struktur data secara lebih holistik, mendeteksi pola kausalitas dan korelasi yang mungkin terlewat jika hanya dilihat dari satu arah sekuensial \autocite{schuster1997bidirectional}.
+
+\subsection{Metode Evaluasi Model}
+Pada subbab ini dijelaskan berbagai metrik yang digunakan untuk menilai kinerja model prediksi secara objektif. Akan digunakan beberapa metrik evaluasi standar yang mengukur akurasi dan kecocokan model.
+
+\subsubsection{Root Mean Squared Error (RMSE)}
+RMSE mengukur standar deviasi dari kesalahan prediksi, yaitu perbedaan antara nilai yang diprediksi oleh model dan nilai sebenarnya \autocite{hodson2022root}. Semakin kecil nilai RMSE menunjukkan kesalahan prediksi yang lebih kecil, yang berarti model memiliki akurasi yang lebih tinggi. Rumus dari RMSE adalah sebagai berikut:
+
+\begin{equation}
+RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
+\label{eq:rmse}
+\end{equation}
+
+Dengan $n$ adalah banyaknya observasi, $y_i$ adalah nilai sebenarnya, dan $\hat{y}_i$ adalah nilai prediksi model. RMSE sensitif terhadap \textit{outliers} dan dalam satuan yang sama dengan variabel target, memudahkan interpretasi \autocite{hodson2022root}.
+
+\subsubsection{Mean Absolute Percentage Error (MAPE)}
+MAPE mengukur \textit{error} dalam persentase, memudahkan perbandingan antar \textit{dataset} dengan skala berbeda \autocite{hyndman2006another}. Rumus dari MAPE adalah sebagai berikut:
+
+\begin{equation}
+MAPE = \frac{100}{n}\sum_{i=1}^{n}\left|\frac{y_i - \hat{y}_i}{y_i}\right|
+\label{eq:mape}
+\end{equation}
+
+Dengan $y_i$ adalah nilai aktual pada periode ke-$i$, $\hat{y}_i$ adalah nilai prediksi pada periode ke-$i$, $n$ adalah jumlah total observasi, dan nilai absolut $| \dots |$ memastikan bahwa setiap \textit{error} selalu bernilai positif. Kelemahan utama MAPE adalah persentase kesalahan akan menjadi tak terhingga atau tidak terdefinisi jika terdapat nilai aktual $y_i = 0$ dalam data observasi \autocite{hyndman2006another}.
+
+\subsubsection{R-squared (R\textsuperscript{2})}
+Koefisien determinasi atau $R^2$ mengukur seberapa baik variasi dalam variabel dependen dapat dijelaskan oleh model regresi. $R^2$ merepresentasikan proporsi varians total yang diperlihatkan oleh garis regresi \autocite{nagelkerke1991note}. Rumus dari $R^2$ adalah sebagai berikut:
+
+\begin{equation}
+R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}
+\label{eq:r2}
+\end{equation}
+
+Dengan $y_i$ adalah nilai aktual observasi ke-$i$, $\hat{y}_i$ adalah nilai prediksi observasi ke-$i$, dan $\bar{y}$ adalah nilai rata-rata dari seluruh nilai aktual. Pembilang $\sum(y_i - \hat{y}_i)^2$ dikenal sebagai \textit{Residual Sum of Squares} (RSS), yaitu jumlah kuadrat kesalahan prediksi, sementara penyebut $\sum(y_i - \bar{y})^2$ adalah \textit{Total Sum of Squares} (TSS), yang merepresentasikan total variabilitas dalam data aktual. Nilai $R^2$ berkisar antara 0 hingga 1, di mana nilai yang mendekati 1 mengindikasikan bahwa model mampu menjelaskan sebagian besar variabilitas data, sedangkan nilai mendekati 0 menunjukkan kinerja prediksi yang buruk.
+
+% --- XAI ---
+\section{Explainable Artificial Intelligence (XAI)}
+\label{sec:xai}
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=0.9\textwidth]{image/ilustrasi_xai.png}
+  \caption{Ilustrasi \textit{Black Box} dan \textit{Interpretable} Model \autocite{hui2022ethical}}
+  \label{gambar:ilustrasi-xai}
+\end{figure}
+
+Kompleksitas model ML dan DL seringkali mengorbankan interpretabilitas 
+model dibanding akurasi prediksi. Rudin menyoroti bahwa untuk keputusan 
+berisiko tinggi seperti kebijakan publik dan penetapan suku bunga, 
+penggunaan model \textit{black box} tanpa penjelasan yang memadai menjadi 
+problematik \autocite{rudin2019stop}. Oleh karena itu, ada XAI untuk membuat hasil 
+prediksi A dapat dipahami dan dipercaya oleh para pengambil keputusan \autocite{adadi2018peeking}.
+
+\subsection{Taksonomi Metode XAI}
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+      \includegraphics[width=0.8\textwidth]{image/taksonomi_xai.png}
+  \caption{Ilustrasi Taksonomi Metode XAI \autocite{adadi2018peeking}}
+  \label{gambar:taksonomi-xai}
+\end{figure}
+Adadi dan Berrada mengklasifikasikan metode XAI ke dalam tiga dimensi utama \autocite{adadi2018peeking}:
+\begin{enumerate}
+\item \textbf{Kompleksitas Model (\textit{Complexity Related Methods})}
+\begin{enumerate}[a.]
+\item \textit{Intrinsic}: Metode ini menggunakan model yang mudah diinterpretasi sejak desain awal, seperti regresi linear. Model ini memang transparan, tetapi sering mengorbankan akurasi prediksi.
+
+\item \textit{Post-hoc}: Metode ini diterapkan setelah model dilatih untuk menjelaskan prediksi dari model kompleks yang tidak transparan. Pendekatan ini memungkinkan penggunaan model dengan akurasi tinggi sambil memberikan penjelasan, tanpa mengubah struktur internal model asli. SHAP dan LIME adalah contoh metode post-hoc yang populer.
+\end{enumerate}
+
+\item \textbf{Cakupan Penjelasan (\textit{Scope Related Methods})}
+\begin{enumerate}[a.]
+\item \textit{Global Interpretability}: Cakupan ini bertujuan untuk memahami logika model secara keseluruhan pada seluruh \textit{dataset}. Metode ini menjawab pertanyaan agregat seperti "Fitur apa yang rata-rata memengaruhi prediksi Bi-Rate?" dan berguna untuk keputusan dalam kebijakan publik.
+
+\item \textit{Local Interpretability}: Cakupan ini fokusnya pada penjelasan untuk satu instans prediksi tunggal untuk menjawab pertanyaan spesifik seperti "Kenapa model memprediksi kenaikan BI-Rate pada bulan Januari 2024?". LIME adalah contoh representatif untuk penjelasan lokal yang dapat mengidentifikasi pengaruh fitur terhadap prediksi individual.
+\end{enumerate}
+
+\item \textbf{Ketergantungan Model (\textit{Model Related Methods})}
+\begin{enumerate}[a.]
+\item \textit{Model-Specific}: Metode ini dirancang untuk arsitektur model tertentu karena memanfaatkan struktur internalnya secara eksplisit. Contohnya visualisasi filter pada \textit{Convolutional Neural Network}, \textit{Attention Mechanism} pada model \textit{Transformer}, atau \textit{gradient-based methods} pada \textit{neural networks}. Kelemahan metode ini adalah pembatasan pilihan model karena harus memilih model yang menyediakan interpretabilitas tertentu.
+
+\item \textit{Model-Agnostic}: Metode ini dapat diterapkan pada semua jenis model ML, memperlakukan model sebagai \textit{black-box} yang hanya mengamati hubungan \textit{input-output}. Pendekatan ini lebih fleksibel dan memungkinkan perbandingan penjelasan antarmodel yang berbeda secara langsung (seperti XGB dengan LSTM).
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{SHapley Additive exPlanations (SHAP)}
+SHAP adalah metode interpretasi yang diperkenalkan oleh Lundberg dan Lee 
+yang menyatukan berbagai teknik interpretasi sebelumnya di bawah 
+kerangka teori permainan kooperatif (\textit{cooperative game theory}) 
+\autocite{lundberg2017unified}. Konsep dasarnya diadopsi dari 
+\textit{Shapley Value} yang dikemukakan oleh Lloyd Shapley pada tahun 
+1953 untuk mendistribusikan keuntungan secara adil di antara pemain 
+dalam sebuah koalisi. Dalam konteks ML, 
+"permainan" ini maksudnya adalah tugas prediksi, "keuntungan" adalah selisih antara 
+prediksi aktual dengan rata-rata prediksi, dan "pemain" yang dimaksud adalah 
+fitur-fitur yang memengaruhi model. SHAP menghitung kontribusi marginal rata-rata dari 
+setiap fitur terhadap prediksi model di semua kemungkinan kombinasi fitur.
+
+Nilai SHAP ($\phi_i$) untuk fitur $i$ didefinisikan secara matematis sebagai berikut:
+\begin{equation}
+\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F| - |S| - 1)!}{|F|!} [f_S(x_S \cup \{i\}) - f_S(x_S)]
+\label{eq:shap}
+\end{equation}
+
+Dengan $F$ adalah  himpunan seluruh fitur dalam model, $S$ adalah subset fitur yang tidak menyertakan fitur $i$ 
+atau $S \subseteq F \setminus \{i\}$. Notasi $|S|$ dan $|F|$ 
+menyatakan jumlah elemen dalam subset $S$ dan jumlah total fitur. 
+Fungsi $f_S(x_S)$ adalah prediksi model ketika hanya fitur-fitur di 
+dalam subset $S$ yang diaktifkan, sedangkan $f_S(x_S \cup \{i\})$ 
+adalah prediksi ketika fitur $i$ ditambahkan ke subset yang sama. 
+Selisih keduanya, yaitu $f_S(x_S \cup \{i\}) - f_S(x_S)$, 
+menggambarkan kontribusi marginal fitur $i$ dalam konteks subset $S$. 
+Kontribusi tersebut lalu dirata-ratakan dengan 
+bobot $\frac{|S|!(|F| - |S| - 1)!}{|F|!}$ untuk memastikan bahwa 
+semua urutan munculnya fitur diperlakukan secara adil. 
+
+Lundberg dan Lee menunjukkan bahwa dalam kelas 
+metode \textit{additive feature attribution}, 
+SHAP adalah satu-satunya solusi yang memenuhi tiga sifat penting 
+sekaligus, yaitu \textit{local accuracy} 
+(penjumlahan seluruh nilai SHAP ditambah nilai dasar sama dengan 
+prediksi model), \textit{missingness} (fitur yang absen tidak boleh 
+berkontribusi), dan \textit{consistency} (jika kontribusi suatu fitur 
+di model meningkat, maka nilai SHAP-nya tidak boleh menurun) 
+\autocite{lundberg2017unified}. 
+Sifat-sifat ini menjadi dasar teoretis yang kuat sehingga SHAP 
+banyak digunakan sebagai standar untuk menjelaskan model kompleks, baik secara global maupun lokal.
+
+\subsubsection{Local Interpretable Model-Agnostic Explanations (LIME)}
+LIME adalah metode interpretasi yang diperkenalkan oleh 
+Ribeirio, Singh, dan Guestrin pada tahun 2016. Fokusnya adalah penjelasan lokal 
+yang cepat dan intuitif. Perbedaannya adalah
+SHAP menghitung kontribusi eksak berdasarkan \textit{game theory}, sedangkan 
+LIME bekerja dengan asumsi bahwa model sekompleks apa pun akan bersifat 
+linear secara lokal di sekitar instans prediksi tertentu \autocite{ribeiro2016why}.
+
+Mekanisme kerja LIME sebagai berikut:
+\begin{enumerate}
+\item LIME membangkitkan data sintetis baru di sekitar titik data yang ingin dijelaskan dengan menambahkan \textit{noise} atau pengacakan (perturbasi data).
+\item Data sintetis kemudian dimasukkan ke model asli (misalnya LSTM) untuk mendapatkan label prediksinya.
+\item Data sintetis diberi bobot berdasarkan kedekatannya (jarak \textit{euclidean}) dengan titik data asli. Data yang lebih dekat akan memiliki bobot yang lebih besar.
+\item Sebuah model linear sederhana seperti regresi linear dilatih pada data sintetis berbobot tersebut. Koefisien model linear ini yang kemudian akan diambil sebagai penjelasan dari model (\textit{explanation}).
+\end{enumerate}
+
+Fungsi objektif LIME didefinisikan sebagai:
+
+\begin{equation}
+\xi(x) = \underset{g \in G}{\text{argmin}} \, L(f, g, \pi_x) + \Omega(g)
+\label{eq:lime}
+\end{equation}
+
+Dengan $f$ adalah model asli yang ingin dijelaskan, $g$ adalah model 
+penjelasan dari kelas model interpretable $G$, $L(f, g, \pi_x)$ 
+mengukur seberapa tidak setia (\textit{unfaithful}) model penjelasan 
+terhadap model asli pada lingkungan lokal yang ditentukan 
+oleh $\pi_x$, dan $\Omega(g)$ adalah istilah yang mengontrol 
+kompleksitas model penjelasan agar tetap sederhana dan 
+mudah dipahami. Hasil akhirnya adalah 
+kumpulan koefisien pada fitur-fitur \textit{interpretable} yang 
+menunjukkan fitur mana yang mendukung atau menentang prediksi 
+model untuk instans tersebut. Kelebihan utama LIME adalah sifatnya 
+yang benar-benar \textit{model-agnostic} dan fleksibel, sehingga 
+dapat diterapkan pada berbagai jenis model dan data, sekaligus 
+memberikan penjelasan lokal yang intuitif dan mudah dikomunikasikan 
+kepada pengguna non-teknis \autocite{ribeiro2016why}.
+
+\subsubsection{Permutation Feature Importance (PFI)}
+
+Permutation Feature Importance (PFI) adalah metode interpretasi model 
+yang diperkenalkan oleh Breiman (2001) untuk mengukur pentingnya fitur 
+dengan mengevaluasi penurunan kinerja model setelah fitur tersebut 
+di-permutasi atau diacak \autocite{breiman2001random}. 
+Ide PFI adalah bahwa sebuah fitur dianggap penting jika mengacak 
+nilainya meningkatkan kesalahan prediksi model karena hal ini 
+menunjukkan bahwa model bergantung pada fitur tersebut untuk membuat 
+prediksi. Sebaliknya, jika mengacak fitur tidak mengubah kesalahan 
+prediksi model yang signifikan, maka fitur tersebut dianggap tidak 
+penting \autocite{molnar2022interpretable}.
+
+Algoritma PFI secara umum bekerja dengan langkah-langkah berikut: 
+\begin{enumerate}
+\item Hitung kesalahan referensi model pada dataset asli.
+\item Untuk setiap fitur $j$, buat data baru dengan mengacak (permutasi) nilai-nilai fitur $j$, sehingga hubungan antara fitur dan target hancur.
+\item Hitung kesalahan model pada data yang telah diacak tersebut.
+\item Terakhir, ukur pentingnya fitur sebagai selisih atau rasio antara kesalahan referensi dan kesalahan setelah permutasi.
+\end{enumerate}
+
+Secara matematis, PFI dapat dituliskan sebagai:
+
+\begin{equation}
+\text{PFI}_j = e_{\text{perm},j} - e_{\text{orig}}
+\label{eq:pfi}
+\end{equation}
+
+Dengan $e_{\text{orig}}$ adalah kesalahan referensi model pada data 
+asli dan $e_{\text{perm},j}$ adalah kesalahan model setelah fitur $j$ 
+dipermutasi.
+
+Keuntungan PFI adalah bersifat \textit{model-agnostic}, dapat 
+diterapkan pada berbagai jenis model, dan tidak memerlukan pelatihan ulang 
+model setelah melakukan permutasi. Namun, PFI memiliki keterbatasan 
+penting ketika fitur-fitur dalam dataset saling berkorelasi 
+(multikolinieritas). Ketika fitur-fitur berkorelasi, permutasi 
+satu fitur masih menyisakan informasi prediktif dari fitur-fitur 
+yang berkorelasi dengannya, sehingga penurunan kinerja model menjadi 
+kurang terlihat dan interpretasi menjadi 
+bias \autocite{molnar2022interpretable}.
+
+\subsection{Penerapan XAI dalam Prediksi Ekonomi}
+Penerapan XAI dalam sektor ekonomi ini bertujuan untuk menjadi penghubung antara kinerja prediktif dan akuntabilitas regulasi. Bussmann dkk. menunjukkan bahwa penggunaan SHAP dalam manajemen risiko kredit memungkinkan institusi keuangan untuk tidak hanya memprediksi gagal bayar (\textit{default}), tetapi juga mengidentifikasi faktor pendorong spesifik (misalnya rasio likuiditas rendah) bagi setiap nasabah \autocite{bussmann2021explainable}. Dalam konteks bank sentral, teknik XAI memungkinkan pembuat kebijakan membedah model DL untuk memastikan bahwa prediksi suku bunga didasarkan pada sinyal ekonomi yang valid seperti \textit{output gap}, bukan korelasi yang salah dalam data \autocite{chakraborty2017machine}.
+
+% --- LLM ---
+\section{Large Language Model (LLM)}
+\label{sec:llm}
+
+\textit{Large Language Model} (LLM) adalah model probabilistik 
+yang dibuat untuk memproses dan menghasilkan teks dengan 
+tingkat koherensi tinggi untuk menyelesaikan berbagai tugas 
+generalisasi bahasa \autocite{zhao2023survey}. 
+
+Perkembangan teknologi pemrosesan bahasa alami telah melalui 
+beberapa fase evolusi yang signifikan sebelum mencapai kapabilitas 
+LLM modern. Perkembangan teknologi ini diklasifikasikan ke 
+dalam empat fase utama \autocite{zhao2023survey}:
+\begin{enumerate}
+\item \textbf{\textit{Statistical Language Models}} (SLM)
+
+Generasi awal \textit{language models} yang dikembangkan berdasarkan prinsip 
+statistik, khususnya \textit{markov assumption}, yang memprediksi 
+kata berikutnya berdasarkan probabilitas kemunculan kata sebelumnya. 
+SLM banyak digunakan dalam sistem pengambilan informasi 
+(\textit{information retrieval}), tetapi memiliki kelemahan 
+mendasar dalam menangani data berdimensi besar karena ledakan 
+kombinasi kata (\textit{curse of dimensionality}).
+
+\item \textbf{\textit{Neural Language Models}} (NLM)
+
+NLM memperkenalkan penggunaan jaringan saraf tiruan 
+(\textit{neural networks}) seperti RNN dan LSTM untuk menghitung 
+probabilitas rangkaian kata. Pendekatan ini memungkinkan model untuk 
+mempelajari representasi fitur kata secara terdistribusi 
+(\textit{word embeddings}), sehingga mampu menangkap semantik 
+kata dengan lebih baik dibandingkan model statistik murni. 
+Namun, arsitektur ini masih memproses data secara sekuensial, 
+membatasi kemampuannya dalam menangkap konteks jangka panjang.
+
+\item \textbf{\textit{Pre-trained Language Models}} (PLM)
+
+PLM dimulai dengan dikenalnya arsitektur \textit{Transformer} yang 
+memungkinkan pemrosesan paralel melalui mekanisme \textit{Self-Attention}. 
+Model seperti BERT (\textit{Bidirectional Encoder Representations from 
+Transformers}) memperkenalkan paradigma \textit{pre-training} pada 
+korpus masif tanpa label, diikuti dengan \textit{fine-tuning} 
+untuk tugas yang spesifik.
+
+\item \textbf{\textit{Large Language Models}} (LLM)
+
+LLM adalah pengembangan ekstrem dari PLM, baik dari segi jumlah 
+parameter maupun ukuran data latih. Pengembangan ini memunculkan 
+kemampuan baru (\textit{emergent abilities}) yang tidak dimiliki 
+model kecil, seperti penalaran logis (\textit{reasoning}) dan pemahaman 
+instruksi kompleks (\textit{few-shot learning}). Contoh LLM 
+adalah GPT (OpenAI) dan Llama (Meta) yang mampu 
+menyelesaikan tugas tanpa pelatihan spesifik 
+sebelumnya \autocite{brown2020language}.
+\end{enumerate}
+
+\subsection{OpenAI GPT-4o}
+GPT-4o (\textit{Generative Pre-trained Transformer 4 - Omni}) adalah model LLM terbaru yang dikembangkan oleh OpenAI. Sebagai evolusi dari seri GPT-4, model ini dirancang untuk menerima input berupa teks, audio, dan gambar, serta menghasilkan respons teks dengan tingkat penalaran yang superior \autocite{openai2024gpt4o}.
+
+Beberapa keunggulan GPT-4o \autocite{openai2024gpt4o}:
+\begin{enumerate}
+\item GPT-4o memiliki kinerja yang baik dalam tugas-tugas yang membutuhkan pemahaman kausalitas kompleks.
+\item Kapasitas token yang besar (128K \textit{context window}) memungkinkan model untuk memproses riwayat data yang panjang dan instruksi \textit{prompt} dengan detail tanpa kehilangan konteks analisis.
+\item Kecepatan \textit{inference} yang signifikan, sehingga hemat biaya untuk eksperimen iteratif dalam generasi narasi.
+\item Kemampuan multimodal native dalam satu model untuk memudahkan integrasi output numerik (CSV/JSON dari model prediksi) ke dalam format naratif.
+\end{enumerate}
+
+\subsection{Meta Llama}
+
+Llama (\textit{Large Language Model Meta AI}) 
+adalah keluarga model LLM yang dikembangkan dan dirilis oleh Meta AI 
+dimulai dari Februari 2023 dengan tujuan mendemokratisasi akses terhadap 
+model bahasa berskala besar untuk komunitas 
+peneliti \autocite{meta2023llama}. Berbeda dengan GPT-4o yang 
+merupakan model proprietary, Llama dirilis dengan bobot model yang 
+tersedia untuk publik, sehingga lebih mudah diakses oleh peneliti 
+dan developer yang memiliki infrastruktur terbatas. Llama menggunakan 
+arsitektur \textit{decoder-only transformer} yang mirip dengan GPT-3, 
+tetapi dengan beberapa perbaikan, seperti penggunaan fungsi aktivasi 
+SwiGLU, \textit{rotary positional embeddings} (RoPE), dan RMSNorm
+\textit{normalization} untuk keseimbangan kapabilitas dan efisiensi komputasi. 
+
+Beberapa keunggulan Llama \autocite{meta2023llama}:
+
+\begin{enumerate}
+\item Fleksibilitas ukuran model dari 7B hingga 70B parameter yang bisa adaptasi dengan infrastruktur penelitian yang terbatas.
+\item Komputasi yang cepat pada perangkat lokal tanpa memerlukan koneksi internet atau API, sehingga lebih hemat biaya untuk eksperimen skala besar.
+\item Transparansi penuh atas arsitektur dan data pelatihan mampu memfasilitasi pemahaman mendalam tentang perilaku model untuk tugas pembuatan narasi dari output XAI.
+\item Fleksibilitas \textit{licensing} yang memungkinkan integrasi ke dalam sistem produksi dengan kontrol penuh atas \textit{deployment} dan \textit{governance} data.
+\end{enumerate}
+
+% --- Penelitian Terkait ---
+\section{Penelitian Terkait}
+\label{sec:penelitian-terkait}
+
+Subbab ini membahas kondisi penelitian terkini terkait topik yang dibahas. Pemahaman terhadap kondisi aktual ini menjadi landasan dalam mengidentifikasi peluang pengembangan lebih lanjut. Selain itu, penelitian-penelitian terdahulu juga dapat menjadi acuan dalam pengerjaan tugas akhir ini.
+
+\subsection{Machine Learning Applications in Central Banking \autocite{chakraborty2017machine}}
+Penelitian ini diterbitkan dalam \textit{Bank of England Staff Working Paper} yang bertujuan mengeksplorasi potensi algoritma \textit{Machine Learning} (ML) untuk menggantikan model ekonometrika standar dalam tugas bank sentral. Menggunakan data indikator makroekonomi Inggris, dibandingkan kinerja model \textit{Random Forest, Support Vector Machines}, dan \textit{Neural Networks}, lalu dibandingkan dengan model tradisional. Hasil eksperimen menunjukkan bahwa model ML secara konsisten lebih unggul dibandingkan model tradisional dalam akurasi prediksi di luar sampel (\textit{out-of-sample accuracy}), terutama pada rentang waktu yang lebih panjang. Namun, kesimpulan utama dari \textit{paper} ini adalah meskipun ML menawarkan akurasi superior, penggunaannya dalam kebijakan terhambat oleh masalah interpretabilitas (\textit{black box}).
+
+\subsection{Explainable Machine Learning in Credit Risk Management \autocite{bussmann2021explainable}}
+Bussmann dkk. memublikasikan penelitian di jurnal \textit{Computational Economics} yang mengembangkan kerangka kerja penilaian risiko kredit menggunakan algoritma XGB yang dijelaskan dengan metode \textit{Shapley Values} (SHAP). Metodologi ini diuji secara empiris pada dataset pinjaman \textit{peer-to-peer} (P2P) untuk memprediksi gagal bayar (\textit{default}). Hasil studi mendemonstrasikan bahwa integrasi SHAP mampu memberikan penjelasan lokal yang konsisten untuk setiap keputusan kredit, sekaligus mengidentifikasi faktor risiko global yang sejalan dengan intuisi ekonomi. \textit{Paper} ini memberikan \textit{blueprint} metodologis tentang bagaimana menggabungkan model \textit{Gradient Boosting} dengan SHAP untuk menghasilkan sistem prediksi keuangan yang transparan dan sesuai dengan regulasi.
+
+\subsection{Temporal Data Meets LLM -- Explainable Financial Time Series Forecasting \autocite{yu2023temporal}}
+Penelitian ini jadi inisiator dalam ranah integrasi \textit{Large Language Models} untuk data keuangan. Yu dkk. mengusulkan kerangka kerja multimodal, yaitu model prediksi numerik (LSTM) digabungkan dengan LLM yang memproses data teks berita keuangan untuk memprediksi pergerakan harga saham NASDAQ-100. Metode yang digunakan melibatkan teknik \textit{prompt engineering} untuk memandu LLM melakukan penalaran terhadap sinyal pasar. Hasil studi menunjukkan bahwa integrasi ini tidak hanya meningkatkan akurasi prediksi dibandingkan model \textit{baseline}, tetapi juga menghasilkan penjelasan tekstual yang logis mengenai penyebab pergerakan pasar. \textit{Paper} ini membuktikan bahwa LLM dapat berperan efektif sebagai mesin interpretasi naratif untuk data \textit{deret waktu}.
+
+\subsection{Explainable-AI powered stock price prediction using time series transformers: A Case Study on BIST100 \autocite{calik2025explainable}}
+Penelitian terbaru oleh Calik dkk. yang dipublikasikan di \textit{arXiv} ini secara spesifik meneliti integrasi metode XAI dengan model \textit{Transformer-based} untuk prediksi harga saham sektor perbankan. Studi ini menggunakan model \textit{Time Series Transformer} yang diperkaya dengan indikator teknikal, kemudian menerapkan SHAP dan LIME untuk memberikan transparansi pada \textit{output} model. Hasil penelitian menunjukkan bahwa model berbasis \textit{Transformer} mengungguli model tradisional, dan penggunaan kombinasi SHAP serta LIME terbukti efektif dalam memberikan wawasan interpretatif kepada investor mengenai fitur mana (misalnya volume transaksi atau tren global) yang paling memengaruhi harga.
